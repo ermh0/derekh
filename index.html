@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1B4DB8">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Дерех">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>Дерех</title>
+<style>
+@font-face{font-family:"Alegreya";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/alegreya-cyrillic-500-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Alegreya";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/alegreya-cyrillic-700-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Alegreya";font-style:normal;font-weight:800;font-display:swap;src:url(fonts/alegreya-cyrillic-800-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Alegreya";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/alegreya-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Alegreya";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/alegreya-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Alegreya";font-style:normal;font-weight:800;font-display:swap;src:url(fonts/alegreya-latin-800-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/frank-ruhl-libre-hebrew-400-normal.woff2) format("woff2");unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/frank-ruhl-libre-hebrew-700-normal.woff2) format("woff2");unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/frank-ruhl-libre-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/frank-ruhl-libre-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/golos-text-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/golos-text-cyrillic-500-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/golos-text-cyrillic-600-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/golos-text-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/golos-text-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/golos-text-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* Layout: one phone-width column. The course is a route of eight stations, each marked by a Hebrew letter (alef to het); lessons, quiz and cards are stops on it. */
+:root{
+  --bg:#ECEEF4;
+  --surface:#FAFBFE;
+  --ink:#13172B;
+  --ink-2:#4A5070;
+  --line:#CBD1E3;
+  --accent:#1B4DB8;
+  --on-accent:#FFFFFF;
+  --accent-soft:#DAE3F8;
+  --good:#1E7A4C;
+  --good-soft:#D6EEE0;
+  --bad:#B3342F;
+  --bad-soft:#F6DAD8;
+  --reward:#956410;
+  --f-display:"Alegreya",Georgia,serif;
+  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-he:"Frank Ruhl Libre","David Libre","Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1120;
+    --surface:#151B30;
+    --ink:#E8EAF4;
+    --ink-2:#A0A8C8;
+    --line:#2B3558;
+    --accent:#86A3FF;
+    --on-accent:#0D1120;
+    --accent-soft:#1E2A55;
+    --good:#62C894;
+    --good-soft:#12342A;
+    --bad:#F2908A;
+    --bad-soft:#3B1C1E;
+    --reward:#E3B34F;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1120;
+  --surface:#151B30;
+  --ink:#E8EAF4;
+  --ink-2:#A0A8C8;
+  --line:#2B3558;
+  --accent:#86A3FF;
+  --on-accent:#0D1120;
+  --accent-soft:#1E2A55;
+  --good:#62C894;
+  --good-soft:#12342A;
+  --bad:#F2908A;
+  --bad-soft:#3B1C1E;
+  --reward:#E3B34F;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+h1,h2,h3,p,ol,ul{margin:0;padding:0}
+ol,ul{list-style:none}
+svg{width:18px;height:18px;flex:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.he{font-family:var(--f-he);font-weight:700}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.muted{color:var(--ink-2)}
+
+.app{
+  max-width:520px;margin:0 auto;
+  padding-block:20px calc(92px + env(safe-area-inset-bottom,0px));
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+.app.focus{padding-block:16px calc(40px + env(safe-area-inset-bottom,0px))}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:10px}
+.brand-name{font-family:var(--f-display);font-weight:800;font-size:32px;letter-spacing:-.01em;line-height:1.1}
+.brand .he{font-size:22px;color:var(--accent)}
+.chips{display:flex;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);background:var(--surface);border-radius:999px;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
+.chip svg{width:16px;height:16px;color:var(--accent)}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.weeks{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin:10px 0 28px}
+.weeks i{height:6px;background:var(--line);border-radius:2px}
+.weeks i.on{background:var(--accent)}
+.weeks i.cur{background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+
+/* route */
+.stop{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px}
+.rail{position:relative;display:flex;justify-content:center}
+.rail::after{content:"";position:absolute;top:48px;bottom:4px;left:50%;width:2px;margin-left:-1px;background:var(--line)}
+.stop:last-child .rail::after{display:none}
+.stop.done .rail::after{background:var(--accent)}
+.node{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-he);font-weight:700;font-size:24px;line-height:1;background:var(--surface);color:var(--ink-2);border:2px dashed var(--line)}
+.node svg{width:22px;height:22px}
+.stop.current .node{background:var(--accent);color:var(--on-accent);border:2px solid var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.stop.done .node{background:var(--accent);color:var(--on-accent);border:2px solid var(--accent)}
+.stop-body{padding-bottom:24px;min-width:0}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.panel-top,.soft-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.he-term{font-size:24px;color:var(--accent)}
+.stop-title{display:block;font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.2;text-wrap:balance}
+.panel .stop-title{font-size:30px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.meta{font-size:14px;color:var(--ink-2)}
+.soft{display:flex;flex-direction:column;gap:4px;width:100%;text-align:left;background:none;border:0;padding:6px 0 0}
+.stop-he{font-size:18px;color:var(--ink-2)}
+.soft-desc{font-size:15px}
+.lockline{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);margin-top:4px}
+.lockline svg{width:14px;height:14px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:48px;padding:12px 20px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);font-weight:600;font-size:16px}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:active{transform:translateY(1px)}
+.btn-row{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+
+/* level */
+.back{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:8px 0;margin-bottom:10px;color:var(--accent);font-weight:600}
+.back svg{transform:rotate(180deg)}
+.lvl-head{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+.lvl-title{font-family:var(--f-display);font-weight:800;font-size:42px;line-height:1.05}
+.lvl-he{font-size:30px;color:var(--accent);text-align:left}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:36px minmax(0,1fr) 20px;gap:14px;align-items:center;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:14px 0;min-height:68px}
+.dot{width:34px;height:34px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-weight:600;font-size:14px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.dot svg{width:18px;height:18px}
+.row.open .dot{border-color:var(--accent);color:var(--accent)}
+.row.done .dot{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.row-title{display:block;font-weight:600}
+.row-sub{display:block;font-size:14px;color:var(--ink-2)}
+.row.locked .row-title{color:var(--ink-2)}
+.chev{color:var(--ink-2)}
+.chev svg{width:18px;height:18px}
+.section-label{margin:28px 0 10px}
+
+/* lesson and quiz */
+.lbar{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);border-radius:50%;color:var(--ink);flex:none}
+.icon-btn svg{width:20px;height:20px}
+.segs{flex:1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px}
+.segs i{height:6px;background:var(--line);border-radius:2px}
+.segs i.on{background:var(--accent)}
+.segs i.cur{background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.stack{display:flex;flex-direction:column;gap:16px}
+.stack h2{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.15;text-wrap:balance}
+.he-hero{font-family:var(--f-he);font-weight:700;font-size:68px;line-height:1.05;color:var(--accent);text-align:left}
+.prose{font-size:18px;line-height:1.6;max-width:62ch}
+.verse{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;display:flex;flex-direction:column;gap:10px}
+.verse .he{font-size:34px;line-height:1.35;text-align:left}
+.verse p{font-family:var(--f-display);font-size:20px;line-height:1.4}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{width:100%;text-align:left;padding:14px 16px;border:1.5px solid var(--line);background:var(--surface);border-radius:8px;font-size:16px;line-height:1.35;min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.opt:not(:disabled):hover{border-color:var(--accent)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.opt.good{border-color:var(--good);background:var(--good-soft)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.good svg{color:var(--good)}
+.opt.bad svg{color:var(--bad)}
+.opt svg{width:20px;height:20px}
+.fb{padding:14px 16px;border-radius:8px;font-size:16px;line-height:1.5}
+.fb.good{background:var(--good-soft)}
+.fb.bad{background:var(--bad-soft)}
+.fb.good b{color:var(--good)}
+.fb.bad b{color:var(--bad)}
+.stars{display:flex;gap:6px}
+.stars svg{width:38px;height:38px;color:var(--reward)}
+.result-num{font-family:var(--f-display);font-weight:800;font-size:56px;line-height:1}
+
+/* cards */
+.lead{display:flex;flex-direction:column;gap:4px;margin-bottom:18px}
+.lead h2{font-family:var(--f-display);font-weight:700;font-size:28px;line-height:1.15}
+.fc{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:290px;width:100%;padding:28px 20px;text-align:center;border:1px solid var(--line);background:var(--surface);border-radius:10px}
+.fc.flipped{border-color:var(--accent)}
+.fc .he{font-size:60px;line-height:1.1;color:var(--accent)}
+.fc .he.sm{font-size:30px}
+.fc .term{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.15}
+.fc .hint{font-size:14px;color:var(--ink-2)}
+.fc .def{font-size:18px;line-height:1.55;max-width:34ch}
+.fc-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.fc-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;font-size:14px;color:var(--ink-2)}
+.linkbtn{background:none;border:0;padding:6px 0;color:var(--accent);font-weight:600;font-size:14px}
+.terms{border-top:1px solid var(--line);margin-top:24px}
+.terms li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.terms .t{font-weight:600}
+.terms .he{font-size:20px;color:var(--ink-2)}
+.pips{display:inline-flex;gap:3px}
+.pips i{width:10px;height:10px;border:1.5px solid var(--line);border-radius:2px}
+.pips i.on{background:var(--accent);border-color:var(--accent)}
+.stat-line{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:15px;color:var(--ink-2);margin-bottom:16px}
+.stat-line b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* badges */
+.bgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}
+.badge{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px 0;border-top:1px solid var(--line)}
+.medal{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-he);font-weight:700;font-size:32px;line-height:1;border:2px dashed var(--line);color:var(--ink-2)}
+.badge.on .medal{background:var(--accent);border:2px solid var(--accent);color:var(--on-accent)}
+.badge-name{font-weight:600;line-height:1.25}
+.badge-how{font-size:14px;color:var(--ink-2);line-height:1.35}
+.reset{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.reset .btn-inline{display:flex;gap:10px;flex-wrap:wrap}
+.btn-sm{min-height:44px;padding:10px 16px;border-radius:8px;border:1px solid var(--line);background:var(--surface);font-weight:600}
+.btn-sm.danger{border-color:var(--bad);color:var(--bad)}
+
+/* tab bar and toast */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.tabs-in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.tabbar button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px 8px;background:none;border:0;color:var(--ink-2);font-size:12px;font-weight:600;min-height:58px}
+.tabbar button[aria-current="page"]{color:var(--accent)}
+.tabbar svg{width:24px;height:24px}
+.toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom,0px));transform:translate(-50%,8px);width:max-content;max-width:calc(100vw - 32px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-weight:500;font-size:15px;line-height:1.35;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:30}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+
+.srcs{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid var(--line)}
+.srcs li{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.4;overflow-wrap:anywhere}
+.srcs a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+</style>
+
+
+</head>
+<body>
+<div class="app" id="app"></div>
+
+<nav class="tabbar" id="tabs" aria-label="Разделы">
+  <div class="tabs-in">
+    <button data-action="tab" data-tab="path"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H14a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h5.5"/></svg><span>Путь</span></button>
+    <button data-action="tab" data-tab="cards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 3.5h12a2 2 0 0 1 2 2V17"/></svg><span>Карточки</span></button>
+    <button data-action="tab" data-tab="badges"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.8L7 21l5-3 5 3-1.5-7.2"/></svg><span>Значки</span></button>
+  </div>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+<script>window.DEREKH_PWA=true;</script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- content ---------- */
+  const WEEKS = [{"n":1,"letter":"א","title":"Основы","he":"יסודות","desc":"Кто такие евреи, один Б-г, Завет и язык понятий","lessons":[{"id":"w1l1","title":"Народ и вера","steps":[{"he":"עם","h":"Народ и традиция сразу","p":"Слово «еврей» называет и народ, и принадлежность к религиозной традиции. Поэтому еврей может быть глубоко верующим, а может считать себя светским. По традиционному взгляду, человек, родившийся евреем, остаётся им, даже если не соблюдает заповеди."},{"h":"Откуда берутся названия","p":"В Торе слово «иври» (еврей) впервые применено к Аврааму (Быт. 14:13). «Иудей» происходит от имени Йегуды (Иуды), сына Яакова: от его колена получило имя царство Иудея, а затем и весь народ. «Израиль» — второе имя Яакова (Быт. 32:29); его потомков называют «Бней Исраэль», сыновья Израиля."},{"h":"Кто считается евреем","p":"По традиционной галахе, еврей — это тот, кто родился от еврейской матери или прошёл гиюр, то есть обращение. Реформистское движение в США с 1983 года признаёт еврейским и ребёнка еврейского отца, если это подтверждено поступками: обрядами, изучением Торы, воспитанием в еврейской жизни. Это один из реальных споров между течениями, к нему мы вернёмся на восьмой неделе."}],"check":{"q":"От имени какого сына Яакова происходит слово «иудей»?","opts":["Леви","Йосеф (Иосиф)","Йегуда (Иуда)","Биньямин (Вениамин)"],"a":2,"why":"Колено Йегуды дало имя царству Иудея, а позже и всему народу."}},{"id":"w1l2","title":"Один Б-г","steps":[{"he":"אחד","h":"Главная идея","p":"Иудаизм учит, что Б-г един, не имеет тела и образа и сотворил мир. Он не часть природы и не делит власть с другими божествами. Такое учение называют монотеизмом."},{"h":"Шма Исраэль","verse":{"he":"שמע ישראל ה׳ אלהינו ה׳ אחד","ru":"«Слушай, Израиль: Адо-най — наш Б-г, Адо-най един» (Втор. 6:4)"},"p":"Это главная декларация веры. Её произносят утром и вечером, и это одна из первых молитв, которую учат дети."},{"h":"Имя, которое не произносят","p":"Имя Б-га из четырёх букв, тетраграмматон, в Торе записано, но не читается так, как написано. При чтении вместо него говорят «Адо-най», а в обычной речи «Ха-Шем», то есть «Имя». Из уважения к Имени, чтобы случайно не стереть его, многие пишут «Б-г» с дефисом."}],"check":{"q":"Как в обычной речи называют Б-га, не произнося Имени?","opts":["Ха-Шем («Имя»)","Ха-Тора («Учение»)","Ха-Брит («Союз»)","Ха-Галаха («Путь»)"],"a":0,"why":"«Ха-Шем» буквально значит «Имя». Остальные слова из списка — термины, которые вы встретите дальше."}},{"id":"w1l3","title":"Завет","steps":[{"he":"ברית","h":"Союз двух сторон","p":"Брит значит «союз, завет». По традиции Б-г заключает завет с Авраамом, а затем со всем народом у горы Синай. Это взаимные обязательства: в иудаизме важна не только вера, но и поступки. Течения иудаизма по-разному понимают избранность народа: от ответственности и миссии до отказа от самой идеи.","verse":{"he":"רק אתכם ידעתי מכל משפחות האדמה על כן אפקד עליכם את כל עונתיכם","ru":"«Только вас Я знал из всех родов земли, поэтому взыщу с вас за все ваши прегрешения» (Амос 3:2)"}},{"h":"Авраам и брит-мила","p":"С Авраамом завет связан с обещанием потомства и земли. Знаком завета названо обрезание, брит-мила. Его совершают мальчикам на восьмой день жизни (Быт. 17)."},{"h":"Синай","p":"У горы Синай, как рассказывает книга Исход, народ получает Тору. В центре рассказа об откровении стоят «Десять речений» (асерет ха-диброт): от запрета идолопоклонства до заповеди о субботе и запретов убивать, красть и лжесвидетельствовать (Исх. 20; повторены во Втор. 5). Традиция считает, что вместе с текстом передавалось и устное объяснение. О нём поговорим на пятой неделе."}],"check":{"q":"Сколько «речений» (диброт), по традиции, было дано у горы Синай?","opts":["Семь","Десять","Двенадцать","Шестьсот тринадцать"],"a":1,"why":"Асерет ха-диброт значит «Десять речений». Число 613 — это общее число заповедей в традиции, о нём следующий урок."}},{"id":"w1l4","title":"Язык понятий","steps":[{"he":"מצווה","h":"Мицва","p":"Мицва значит «заповедь». Традиция насчитывает 613 мицвот (этот счёт приводит Талмуд, Макот 23б, от имени рабби Симлая): 248 велений («делай») и 365 запретов («не делай»). Какие именно заповеди входят в этот список, средневековые авторы считали по-разному. В разговорной речи «мицва» ещё и «доброе дело»."},{"he":"הלכה","h":"Галаха","p":"Галаха — это религиозное право: как именно исполнять мицвот в жизни. Слово происходит от корня «ходить», то есть «путь, по которому идут». Эту же идею несёт название приложения: «дерех» значит «дорога»."},{"he":"אגדה","h":"Аггада","p":"Аггада — всё, что не право: притчи, истории, этические наставления и легенды мудрецов. Галаха отвечает на вопрос «как поступать», а аггада на вопрос «зачем и почему». В Талмуде они переплетены."}],"check":{"q":"Что из этого относится к аггаде?","opts":["Закон о границах субботнего пути","Правила приготовления кошерной еды","Время чтения Шма утром и вечером","Притча мудреца о милосердии"],"a":3,"why":"Притча и история относятся к аггаде. Остальные варианты — материал галахи: нормы и правила."}}],"quiz":[{"q":"От какого корня происходит слово «галаха»?","opts":["«Говорить»","«Ходить, идти»","«Записывать»","«Учить»"],"a":1,"why":"Галаха — «путь, по которому идут»: нормы о том, как жить по заповедям."},{"q":"Кто считается евреем по традиционной галахе?","opts":["Только тот, кто соблюдает шаббат","Любой, кто живёт в Израиле","Родившийся от еврейской матери или прошедший гиюр","Тот, у кого еврейская фамилия"],"a":2,"why":"Так считают традиционные течения. Реформистское движение в США с 1983 года признаёт и происхождение по отцу, если оно подтверждено поступками и воспитанием."},{"q":"С каких слов начинается главная декларация веры «Шма»?","opts":["«Слушай, Израиль»","«В начале сотворил Б-г»","«Помни день субботний»","«Да будет свет»"],"a":0,"why":"«Шма Исраэль» значит «Слушай, Израиль» (Втор. 6:4). Остальные фразы — другие известные места Торы."},{"q":"Как по традиции поступают с Именем Б-га из четырёх букв?","opts":["Заменяют именем Авраама","Читают вслух так, как написано","Произносят только в синагоге","Читают «Адо-най» или говорят «Ха-Шем»"],"a":3,"why":"Имя записано в Торе, но вслух так, как написано, его не произносят: при чтении говорят «Адо-най», в речи «Ха-Шем»."},{"q":"Сколько всего заповедей насчитывает традиция?","opts":["10","248","365","613"],"a":3,"why":"613: это 248 велений и 365 запретов. Числа 248 и 365 из вариантов — это части общего счёта."},{"q":"Какой обряд назван знаком завета с Авраамом?","opts":["Пасхальная трапеза","Брит-мила (обрезание)","Ношение цицит","Паломничество в Иерусалим"],"a":1,"why":"Об этом сказано в Быт. 17. Обряд совершают на восьмой день жизни мальчика."},{"q":"Чьё второе имя, по Торе, Израиль?","opts":["Яаков (Иаков)","Авраам","Ицхак (Исаак)","Моше (Моисей)"],"a":0,"why":"В Быт. 32:29 Яаков получает имя Израиль. Поэтому его потомков называют «Бней Исраэль», сыновья Израиля."},{"q":"Что говорит пророк Амос о народе, которого Б-г «знал» из всех родов земли?","opts":["Он освобождён от наказания","Он не нуждается в законах","Он будет призван к ответу за свои прегрешения","Он станет править другими народами"],"a":2,"why":"Амос 3:2: «Только вас Я знал из всех родов земли, поэтому взыщу с вас за все ваши прегрешения». Многие понимают избранность как ответственность, но течения иудаизма трактуют её по-разному."}],"cards":[{"id":"w1c1","he":"תורה","term":"Тора","def":"Учение, наставление. В узком смысле Пятикнижие Моисеево, в широком вся традиция Б-жьего учения, письменная и устная."},{"id":"w1c2","he":"מצווה","term":"Мицва","def":"Заповедь. По традиционному счёту их 613: 248 велений и 365 запретов. В разговорной речи ещё и «доброе дело»."},{"id":"w1c3","he":"הלכה","term":"Галаха","def":"Религиозное право. От корня «ходить»: путь, по которому идут."},{"id":"w1c4","he":"אגדה","term":"Аггада","def":"Часть традиции, которая не право: притчи, истории, этика, легенды мудрецов."},{"id":"w1c5","he":"ברית","term":"Брит","def":"Союз, завет между Б-гом и народом."},{"id":"w1c6","he":"ברית מילה","term":"Брит-мила","def":"«Завет обрезания», знак завета с Авраамом. Совершается на восьмой день жизни мальчика."},{"id":"w1c7","he":"שמע ישראל","term":"Шма Исраэль","def":"«Слушай, Израиль». Главная декларация веры в единого Б-га, Втор. 6:4."},{"id":"w1c8","he":"השם","term":"Ха-Шем","def":"«Имя». Так в обычной речи называют Б-га, не произнося Его Имени."},{"id":"w1c9","he":"בני ישראל","term":"Бней Исраэль","def":"«Сыновья Израиля». Традиционное название еврейского народа."},{"id":"w1c10","he":"גיור","term":"Гиюр","def":"Обращение в иудаизм."},{"id":"w1c11","he":"עשרת הדיברות","term":"Асерет ха-диброт","def":"«Десять речений», известные как Десять заповедей. Исх. 20 и Втор. 5."},{"id":"w1c12","he":"יהודי","term":"Йегуди","def":"Еврей, иудей. От имени Йегуды (Иуды), сына Яакова."}],"sources":[{"title":"Sefaria: Genesis 14:13","url":"https://www.sefaria.org/Genesis.14.13"},{"title":"Sefaria: Amos 3:2","url":"https://www.sefaria.org/Amos.3.2"},{"title":"Sefaria: Makkot 23b","url":"https://www.sefaria.org/Makkot.23b"},{"title":"Encyclopaedia Britannica: Jew (people)","url":"https://www.britannica.com/topic/Jew-people"},{"title":"My Jewish Learning: Patrilineal Descent","url":"https://www.myjewishlearning.com/article/patrilineal-descent/"},{"title":"Jewish Virtual Library: Reform Judaism, patrilineal descent","url":"https://www.jewishvirtuallibrary.org/jsource/Judaism/patrilineal1.html"},{"title":"My Jewish Learning: The Shema","url":"https://www.myjewishlearning.com/article/the-shema/"},{"title":"Jewish Virtual Library: Halakhah","url":"https://www.jewishvirtuallibrary.org/halakhah"},{"title":"TheTorah.com: Who Were the Hebrews","url":"https://www.thetorah.com/article/who-were-the-hebrews"},{"title":"My Jewish Learning: Chosen People","url":"https://www.myjewishlearning.com/article/chosen-people/"}]},{"n":2,"letter":"ב","title":"Танах","he":"תנ״ך","desc":"Тора, Пророки и Писания: как устроена Библия","lessons":[{"id":"w2l1","title":"Три части Танаха","steps":[{"he":"תנ״ך","h":"Слово из трёх букв","p":"Еврейская Библия называется Танах. Это аббревиатура из первых букв трёх её частей: Тора (Учение), Невиим (Пророки) и Ктувим (Писания). Тора — это пять книг. Каждая названа по слову из первой фразы: Берешит (Бытие), Шмот (Исход), Ваикра (Левит), Бемидбар (Числа), Дварим (Второзаконие)."},{"he":"נביאים","h":"Пророки ранние и поздние","p":"Невиим делят на две группы. Ранние пророки рассказывают историю народа: книги Йегошуа (Иисус Навин), Шофтим (Судьи), Шмуэль (Самуил) и Мелахим (Цари). Поздние пророки — это книги Йешаягу (Исаия), Ирмеягу (Иеремия), Йехезкель (Иезекииль) и «Двенадцать»: двенадцать коротких пророческих книг. Их издавна писали на одном свитке и считают одной книгой."},{"h":"Двадцать четыре книги","p":"По еврейскому счёту в Танахе 24 книги: 5 в Торе, 8 в Пророках и 11 в Писаниях. В Писания входят, например, Теилим (Псалмы), Мишлей (Притчи), Иов, Рут (Руфь) и Эстер (Есфирь). Шмуэль, Мелахим и Диврей ха-ямим (Хроники) считаются каждая одной книгой. В христианском Ветхом Завете те же тексты поделены и расставлены иначе. Например, в протестантских изданиях выходит 39 книг, а пророки стоят в конце."}],"check":{"q":"Сколько книг в Танахе по еврейскому счёту?","opts":["39","24","12","54"],"a":1,"why":"24 книги: 5 в Торе, 8 в Пророках, 11 в Писаниях. 39 получается в протестантском счёте тех же текстов."}},{"id":"w2l2","title":"Бытие и Исход: сюжет","steps":[{"he":"בראשית","h":"Начало и Авраам","verse":{"he":"ויאמר ה׳ אל אברם לך לך מארצך וממולדתך ומבית אביך אל הארץ אשר אראך","ru":"«И сказал Б-г Авраму: иди из земли твоей, от родни твоей и из дома отца твоего в землю, которую Я покажу тебе» (Быт. 12:1)"},"p":"Книга Бытия открывается сотворением мира. Дальше идут Адам и Ева, Каин и Авель, потоп и Ноах (Ной), Вавилонская башня. С 12-й главы рассказ переходит к одной семье: Авраама и Сары. В этом стихе он ещё зовётся Аврам: новое имя он получит позже (Быт. 17:5)."},{"h":"Праотцы и двенадцать сыновей","p":"Сын Авраама и Сары — Ицхак (Исаак), его жена Ривка (Ревекка). Их сын Яаков (Иаков) женится на Лее и Рахели и получает второе имя Израиль. У Яакова двенадцать сыновей. Братья из зависти продают Йосефа (Иосифа), и он попадает в Египет. Там он толкует сны фараона и становится вторым человеком после фараона. В голод вся семья переселяется к нему."},{"he":"שמות","h":"Исход и Синай","p":"Книга Исход начинается с того, что новый фараон порабощает потомков Яакова. Моше (Моисей) вырастает в доме дочери фараона, а у горящего куста получает призвание. Египет поражают десять казней, народ уходит, проходит через море и у горы Синай получает Десять речений. Это пересказ текста. Как смотрят на эти события историки, обсудим на третьей неделе."}],"check":{"q":"Как, по книге Бытия, Йосеф оказался в Египте?","opts":["Его продали братья","Его послал туда Авраам","Он бежал от потопа","Его вывел Моше"],"a":0,"why":"Братья из зависти продали Йосефа, и его привезли в Египет (Быт. 37). Позже туда переселилась вся семья."}},{"id":"w2l3","title":"Свиток и недельная глава","steps":[{"he":"ספר תורה","h":"Свиток, написанный рукой","p":"Сефер Тора, свиток Торы, пишется от руки на пергаменте из кожи кошерного животного. Пишет его софер, то есть писец, обученный законам письма. Работает он пером и особыми чернилами, а листы сшивают в один свиток. Печатный свиток для чтения в синагоге не годится."},{"he":"פרשה","h":"Пятьдесят четыре главы","p":"Тору делят на 54 недельные главы. Глава называется параша, во множественном числе парашот. За год читают всю Тору, от Бытия до Второзакония. В большинстве лет суббот на все главы не хватает, и некоторые короткие главы читают сдвоенными. В праздник Симхат Тора дочитывают последние стихи и сразу начинают Тору заново."},{"he":"הפטרה","h":"Когда читают и что добавляют","p":"Полностью недельную главу читают в синагоге утром в Шаббат. По понедельникам и четвергам утром читают короткий отрывок: начало главы ближайшей субботы. После чтения Торы в Шаббат и в праздники читают хафтару: отрывок из книг Пророков, обычно связанный с темой недельной главы."}],"check":{"q":"Что происходит с чтением Торы в праздник Симхат Тора?","opts":["Читают только Десять речений","Чтение Торы прерывают на месяц","Дочитывают Тору и сразу начинают заново","Читают только книги Пророков"],"a":2,"why":"В Симхат Тора завершают годовой цикл последними стихами Второзакония и тут же начинают с первых слов Бытия."}},{"id":"w2l4","title":"Как читать текст","steps":[{"he":"פרדס","h":"Четыре уровня","p":"Средневековые толкователи описали четыре уровня смысла. Их первые буквы складываются в слово ПаРДеС, «сад». Пшат — простой, прямой смысл текста. Ремез — намёк. Дераш — толкование, которое ищет в тексте нравственный и религиозный урок. Сод — тайный, мистический смысл. Один и тот же стих можно читать на всех уровнях."},{"he":"רש״י","h":"Раши и мидраш","p":"Раши — это сокращение от «рабби Шломо Ицхаки». Он жил в городе Труа во Франции в 1040–1105 годах и написал комментарии почти ко всем книгам Танаха и к Талмуду. Раши стремился объяснить простой смысл стиха, но охотно приводил и мидраш. Мидраш — это толкования мудрецов, которые заполняют пробелы в тексте и выводят из него законы и уроки."},{"h":"Перевод и наука","p":"Септуагинта — древнейший известный перевод еврейской Библии на греческий. По мнению историков, Тору перевели в Александрии в III веке до н. э. Название значит «семьдесят»: по легенде, переводчиков было 72. Есть и современный научный подход: он изучает, когда и из каких источников мог сложиться текст. Традиция же видит в Торе откровение, данное Моше."}],"check":{"q":"Что в ПаРДеСе означает «пшат»?","opts":["Тайный, мистический смысл","Намёк, скрытый в тексте","Нравственный урок","Простой, прямой смысл текста"],"a":3,"why":"Пшат — первый уровень, простой смысл. Намёк называется ремез, урок называется дераш, тайный смысл называется сод."}}],"quiz":[{"q":"Из каких частей состоит Танах?","opts":["Тора, Мишна и Талмуд","Тора, Невиим и Ктувим","Тора, Мидраш и Галаха","Тора, Псалмы и Хроники"],"a":1,"why":"Танах — аббревиатура из первых букв трёх частей: Тора, Невиим (Пророки), Ктувим (Писания)."},{"q":"Как двенадцать коротких пророческих книг считаются в еврейском счёте книг Танаха?","opts":["Как одну книгу «Двенадцать»","Как двенадцать книг","Как часть Торы","Как часть Писаний"],"a":0,"why":"Их издавна писали на одном свитке, поэтому они считаются одной книгой среди поздних Пророков."},{"q":"Кто, по книге Бытия, получил второе имя Израиль?","opts":["Авраам","Ицхак","Яаков","Йосеф"],"a":2,"why":"Второе имя Израиль получает Яаков, отец двенадцати сыновей. Отсюда «Бней Исраэль», сыновья Израиля."},{"q":"Где, по книге Исход, народ после выхода из Египта получает Десять речений?","opts":["В Иерусалиме, в Храме","В Вавилоне","В земле Ханаан","У горы Синай"],"a":3,"why":"После казней и перехода через море народ приходит к горе Синай и получает Десять речений (Исх. 19–20)."},{"q":"Кто пишет свиток Торы?","opts":["Софер, обученный писец","Типограф на печатном станке","Любой член общины по очереди","Кантор во время молитвы"],"a":0,"why":"Сефер Тора пишется от руки на пергаменте писцом-софером, который знает законы письма."},{"q":"Что такое хафтара?","opts":["Половина недельной главы","Отрывок из книг Пророков после чтения Торы","Молитва перед чтением Торы","Название свитка Торы"],"a":1,"why":"Хафтара — отрывок из Пророков, обычно связанный по теме с недельной главой."},{"q":"Чем известен Раши?","opts":["Он перевёл Тору на греческий","Он разделил Тору на 54 главы","Он написал комментарии к Танаху и Талмуду","Он составил книгу Псалмов"],"a":2,"why":"Раши (1040–1105) из французского Труа написал комментарии почти ко всем книгам Танаха и к Талмуду."},{"q":"Что такое Септуагинта?","opts":["Древний перевод еврейской Библии на греческий","Сборник мидрашей","Четвёртый уровень толкования","Свиток с книгами Пророков"],"a":0,"why":"Септуагинта — древнейший греческий перевод; по мнению историков, Тору перевели в Александрии в III веке до н. э."}],"cards":[{"id":"w2c1","he":"תנ״ך","term":"Танах","def":"Еврейская Библия. Аббревиатура трёх частей: Тора, Невиим, Ктувим. По еврейскому счёту 24 книги."},{"id":"w2c2","he":"נביאים","term":"Невиим","def":"«Пророки», вторая часть Танаха. Ранние пророки рассказывают историю, поздние передают речи пророков."},{"id":"w2c3","he":"כתובים","term":"Ктувим","def":"«Писания», третья часть Танаха: Псалмы, Притчи, Иов, Рут, Эстер и другие книги."},{"id":"w2c4","he":"תרי עשר","term":"Трей Асар","def":"«Двенадцать». Двенадцать коротких пророческих книг, которые писали на одном свитке и считают одной книгой."},{"id":"w2c5","he":"ספר תורה","term":"Сефер Тора","def":"Свиток Торы, написанный от руки на пергаменте. Из него читают в синагоге."},{"id":"w2c6","he":"סופר","term":"Софер","def":"Писец, обученный законам письма. Пишет свитки Торы пером и особыми чернилами."},{"id":"w2c7","he":"פרשה","term":"Параша","def":"Недельная глава Торы. Всего их 54, за год прочитывают всю Тору. Мн. ч. парашот."},{"id":"w2c8","he":"הפטרה","term":"Хафтара","def":"Отрывок из книг Пророков, который читают после чтения Торы в Шаббат и в праздники."},{"id":"w2c9","he":"פרדס","term":"ПаРДеС","def":"«Сад». Аббревиатура четырёх уровней толкования: пшат, ремез, дераш, сод."},{"id":"w2c10","he":"פשט","term":"Пшат","def":"Простой, прямой смысл текста. Первый уровень ПаРДеСа."},{"id":"w2c11","he":"מדרש","term":"Мидраш","def":"Толкования мудрецов, которые заполняют пробелы в тексте Торы и выводят из него законы и уроки."},{"id":"w2c12","he":"רש״י","term":"Раши","def":"Рабби Шломо Ицхаки (1040–1105) из Труа, автор комментариев к Танаху и Талмуду, объяснявший простой смысл текста."}],"sources":[{"title":"Encyclopaedia Britannica: Tanakh","url":"https://www.britannica.com/topic/Tanakh"},{"title":"Posen Library: From Collection to Canon. The Emergence of the Bible/Tanakh","url":"https://www.posenlibrary.com/node/11666"},{"title":"Britannica (Student): Bible","url":"https://kids.britannica.com/students/article/Bible/273205"},{"title":"Encyclopaedia Britannica: Genesis","url":"https://www.britannica.com/topic/Genesis-Old-Testament"},{"title":"Jewish Encyclopedia: Exodus, Book of","url":"https://www.jewishencyclopedia.com/articles/5940-exodus-book-of"},{"title":"My Jewish Learning: Torah Scroll","url":"https://www.myjewishlearning.com/article/torah-scroll/"},{"title":"Judaism 101: Torah Readings","url":"https://jewfaq.org/readings.htm"},{"title":"Encyclopaedia Britannica: Peshat","url":"https://www.britannica.com/topic/peshat"},{"title":"Jewish Virtual Library: Rabbi Shlomo Yitzchaki (Rashi)","url":"https://www.jewishvirtuallibrary.org/rabbi-shlomo-yitzchaki-rashi"},{"title":"Livius: Septuagint","url":"https://www.livius.org/sources/about/septuagint/"}]},{"n":3,"letter":"ג","title":"Первый Храм","he":"בית ראשון","desc":"От праотцев до царей и пророков","lessons":[{"id":"w3l1","title":"От праотцев к земле","steps":[{"he":"שבטים","h":"Праотцы и двенадцать колен","p":"По рассказу Торы, история народа начинается с трёх праотцев: Авраама, его сына Ицхака (Исаака) и внука Яакова (Иакова). Яаков получил второе имя Израиль. У него было двенадцать сыновей, и от них, по Торе, произошли двенадцать колен, то есть родов народа Израиля.","verse":{"he":"כל אלה שבטי ישראל שנים עשר","ru":"«Всё это — колена Израиля, двенадцать» (Быт. 49:28)"}},{"h":"Исход, Йегошуа и судьи","p":"По рассказу Библии, потомки Яакова попали в рабство в Египте, Моше (Моисей) вывел их на свободу, а его преемник Йегошуа (Иисус Навин) перевёл народ через Иордан и начал завоевание страны с Иерихона. Потом коленами руководили судьи (шофтим), местные вожди и воины. Среди них была пророчица Двора (Девора). Судьёй был и Шмуэль (Самуил), при котором появился первый царь."},{"he":"ישראל","h":"Что говорит археология","p":"Первое известное упоминание «Израиля» вне Библии — египетская стела фараона Мернептаха, около 1208 г. до н. э. Там сказано, что Израиль «опустошён». Значит, по мнению большинства учёных, народ с этим именем тогда уже жил в Ханаане. Как рассказ об исходе и завоевании соотносится с находками, историки спорят: одни видят в нём историческое ядро, другие — постепенное расселение, третьи отвергают его историчность. Традиция принимает рассказ Торы как историю."}],"check":{"q":"Где находится первое известное упоминание «Израиля» вне Библии?","opts":["На стеле Мернептаха","В Вавилонском Талмуде","В письме Иеремии","На стенах Первого Храма"],"a":0,"why":"Это египетская стела фараона Мернептаха, около 1208 г. до н. э. Точный год учёные называют с расхождением в год-два."}},{"id":"w3l2","title":"Цари: Шауль, Давид, Шломо","steps":[{"he":"מלך","h":"Первый царь и Давид","p":"По рассказу Библии, судья Шмуэль помазал на царство Шауля (Саула) из колена Биньямина. Он стал первым царём Израиля и воевал с филистимлянами. После него царём стал Давид. По мнению историков, Давид жил около 1000 г. до н. э. По Библии, он взял Иерусалим, сделал его столицей и перенёс туда ковчег завета."},{"he":"בית ראשון","h":"Шломо строит Храм","p":"По рассказу Библии, сын Давида Шломо (Соломон) построил в Иерусалиме Храм, который теперь называют Первым. Историки обычно относят его царствование к X в. до н. э. Почти всё, что мы знаем о Шломо, взято из Библии, и археологи спорят, насколько велико было его царство. По Талмуду, Первый Храм простоял 410 лет (Йома 9а)."},{"h":"Два царства","p":"По рассказу Библии, после смерти Шломо царство раскололось. Северные колена отвергли его сына Рехавама (Ровоама) и пошли за Яровамом (Иеровоамом): так возникло северное Израильское царство. На юге, с Иерусалимом и Храмом, осталось Иудейское царство потомков Давида. Около 722 г. до н. э. Ассирия разгромила Израильское царство и увела часть жителей в плен."}],"check":{"q":"Какая держава около 722 г. до н. э. разгромила северное Израильское царство?","opts":["Египет","Ассирия","Вавилон","Персия"],"a":1,"why":"Северное царство пало под ударом Ассирии около 722 г. до н. э. Вавилон позже, в 586 (по другим расчётам 587) г. до н. э., разрушил Иерусалим."}},{"id":"w3l3","title":"Пророки","steps":[{"he":"נביא","h":"Не только предсказатель","p":"Пророк (нави) в Танахе прежде всего посланник Б-га. Он обличает, предостерегает и зовёт вернуться к правильной жизни. Предсказания будущего лишь часть его роли. Элиягу (Илия) выступал против служения Баалу при царе Ахаве. Когда Ахав присвоил виноградник Навота, убитого по ложному обвинению, Элиягу пришёл к царю с обличением."},{"h":"Справедливость к слабым","p":"В VIII в. до н. э. Амос из Текоа пришёл в северное царство и обличал богатых, которые угнетали бедных и при этом приносили пышные жертвы. Йешаягу (Исаия) в Иерусалиме призывал защищать сироту и вступаться за вдову (Ис. 1:17). Позже Ирмеягу (Иеремия) предупреждал Иудею о бедствии.","verse":{"he":"ויגל כמים משפט וצדקה כנחל איתן","ru":"«Пусть правосудие катится, как вода, а праведность, как неиссякающий поток» (Амос 5:24)"}},{"he":"חסד","h":"Два знаменитых стиха","p":"Йешаягу говорит о времени, когда народы перекуют мечи на орала, а копья на садовые ножи и больше не будут учиться войне (Ис. 2:4). Пророк Миха (Михей) в одном стихе отвечает, чего Б-г ждёт от человека: творить правосудие, любить милосердие (хесед) и скромно ходить перед Б-гом.","verse":{"he":"כי אם עשות משפט ואהבת חסד והצנע לכת עם אלהיך","ru":"«Только творить правосудие, любить милосердие и скромно ходить с твоим Б-гом» (Миха 6:8)"}}],"check":{"q":"В чём, по Танаху, прежде всего роль пророка (нави)?","opts":["Гадание о судьбе отдельных людей","Управление Храмом","Обличать и звать вернуться к правильной жизни","Командование войском"],"a":2,"why":"Пророк — посланник, который обличает и зовёт к правильной жизни. Предсказание будущего лишь одна из сторон его роли."}},{"id":"w3l4","title":"Падение Иудеи","steps":[{"he":"חורבן","h":"Вавилон и разрушение","p":"В 597 г. до н. э. вавилонский царь Навуходоносор взял Иерусалим и увёл в Вавилон царя и знать. Новый царь Цидкияу (Седекия) восстал, и вавилонское войско вернулось. Иерусалим был разрушен, а Храм сожжён. По принятой у историков хронологии это 586 г. до н. э., некоторые называют 587 год. По традиционной хронологии (книга «Седер олам») это 422 г. до н. э., то есть примерно на 165 лет позже."},{"he":"גלות","h":"На реках вавилонских","p":"Начался вавилонский плен (галут, изгнание). Псалом 137 передаёт плач изгнанников и клятву не забыть Иерусалим. Ирмеягу же написал пленникам письмо (Иер. 29): стройте дома, сажайте сады, женитесь и молитесь о благополучии города, где вы живёте. Он обещал возвращение через семьдесят лет. Около 538 г. до н. э. персидский царь Кореш (Кир) разрешил евреям вернуться.","verse":{"he":"על נהרות בבל שם ישבנו גם בכינו בזכרנו את ציון","ru":"«У рек Вавилона там сидели мы и плакали, вспоминая Сион» (Пс. 137:1)"}},{"he":"תשעה באב","h":"Тиша бе-Ав","p":"Тиша бе-Ав, девятое число месяца ав, — день траура по разрушению Первого и Второго Храмов. Это пост примерно на сутки, от заката до наступления темноты на следующий день. В синагоге читают книгу Эйха (Плач Иеремии), которую традиция приписывает Ирмеягу. Многие сидят на низких скамьях, как скорбящие. С этим днём связывают и другие беды еврейской истории."}],"check":{"q":"Что советовал Ирмеягу пленникам в Вавилоне в своём письме?","opts":["Сразу бежать обратно в Иудею","Поднять восстание против Вавилона","Строить дома и молиться о благополучии города","Отказаться от своих обычаев"],"a":2,"why":"В Иер. 29 пророк велит строить дома, сажать сады, заводить семьи и молиться о благополучии города, куда их изгнали."}}],"quiz":[{"q":"От кого, по Торе, произошли двенадцать колен Израиля?","opts":["От двенадцати сыновей Яакова","От двенадцати судей","От двенадцати пророков","От двенадцати царей Иудеи"],"a":0,"why":"У Яакова, которого также зовут Израиль, было двенадцать сыновей, предков колен (Быт. 49:28)."},{"q":"Как историки относятся к рассказу об исходе и завоевании Ханаана?","opts":["Единогласно считают его выдумкой","Единогласно считают его точной хроникой","Спорят, и единого мнения нет","Не изучают его вообще"],"a":2,"why":"Одни видят в рассказе историческое ядро, другие постепенное расселение, третьи отвергают его историчность. Традиция принимает рассказ Торы как историю."},{"q":"По рассказу Библии, какой город Давид взял и сделал своей столицей?","opts":["Шхем","Самарию","Иерихон","Иерусалим"],"a":3,"why":"По рассказу Библии, Давид взял Иерусалим, сделал его столицей и перенёс туда ковчег завета."},{"q":"По рассказу Библии, какое царство осталось за потомками Давида после раскола?","opts":["Северное Израильское","Южное Иудейское с Иерусалимом","Ассирийское","Египетское"],"a":1,"why":"Северные колена пошли за Яровамом, а Иудея с Иерусалимом и Храмом осталась за династией Давида."},{"q":"Какой пророк, по рассказу Библии, выступал против служения Баалу при царе Ахаве?","opts":["Амос","Ирмеягу","Элиягу","Миха"],"a":2,"why":"Элиягу (Илия) спорил с Ахавом о служении Баалу и обличил его за виноградник Навота."},{"q":"Что, по стиху Михи 6:8, Б-г ждёт от человека?","opts":["Творить правосудие, любить милосердие и скромно ходить перед Б-гом","Приносить как можно больше жертв","Строить дворцы и крепости","Знать наизусть все законы"],"a":0,"why":"Миха сводит ответ к трём вещам: правосудию, милосердию (хесед) и скромности перед Б-гом."},{"q":"Когда Вавилон разрушил Иерусалим и Первый Храм, по мнению историков?","opts":["Около 1208 г. до н. э.","Около 722 г. до н. э.","Около 538 г. до н. э.","В 586 г. до н. э. (некоторые называют 587)"],"a":3,"why":"Историки называют 586 или 587 год. Около 722 г. до н. э. пало северное царство, а около 538 г. до н. э. Кир разрешил вернуться."},{"q":"Что вспоминают в Тиша бе-Ав?","opts":["Выход из Египта","Разрушение Первого и Второго Храмов","Освящение Храма Шломо","Дарование Торы"],"a":1,"why":"Девятое ава — день траура и поста по двум разрушенным Храмам. В этот день читают книгу Эйха."}],"cards":[{"id":"w3c1","he":"שבטי ישראל","term":"Шивтей Исраэль","def":"Двенадцать колен Израиля. По Торе, они происходят от двенадцати сыновей Яакова."},{"id":"w3c2","he":"שופטים","term":"Шофтим","def":"Судьи: вожди и воины колен после Йегошуа и до первых царей. Среди них пророчица Двора и Шмуэль."},{"id":"w3c3","he":"מצבת מרנפתח","term":"Стела Мернептаха","def":"Египетская надпись около 1208 г. до н. э. с первым известным упоминанием «Израиля» вне Библии."},{"id":"w3c4","he":"בית ראשון","term":"Байит ришон","def":"Первый Храм в Иерусалиме, построенный Шломо (Соломоном). По мнению историков, разрушен Вавилоном в 586 г. до н. э. (по другим расчётам в 587)."},{"id":"w3c5","he":"ירושלים","term":"Йерушалаим","def":"Иерусалим. По Библии, Давид сделал его столицей, а Шломо построил здесь Храм."},{"id":"w3c6","he":"ממלכת יהודה","term":"Мамлехет Йегуда","def":"Южное Иудейское царство после раскола. Столица Иерусалим, цари из потомков Давида."},{"id":"w3c7","he":"ממלכת ישראל","term":"Мамлехет Исраэль","def":"Северное Израильское царство после раскола. Разгромлено Ассирией около 722 г. до н. э."},{"id":"w3c8","he":"נביא","term":"Нави","def":"Пророк: посланник Б-га, который обличает, предостерегает и зовёт к справедливости. Предсказание будущего лишь часть его роли."},{"id":"w3c9","he":"חסד","term":"Хесед","def":"Милосердие, доброта. Одно из трёх требований в стихе Михи 6:8."},{"id":"w3c10","he":"גלות","term":"Галут","def":"Изгнание, жизнь народа вне своей земли. Вавилонский плен начался после взятия Иерусалима."},{"id":"w3c11","he":"תשעה באב","term":"Тиша бе-Ав","def":"Девятое ава. День поста и траура по разрушению Первого и Второго Храмов."},{"id":"w3c12","he":"איכה","term":"Эйха","def":"Книга «Плач Иеремии». Её читают в Тиша бе-Ав, традиция приписывает её пророку Ирмеягу."}],"sources":[{"title":"Britannica: Israel Stela","url":"https://www.britannica.com/topic/Israel-Stela"},{"title":"My Jewish Learning: Exodus: History or Mythic Tale?","url":"https://www.myjewishlearning.com/article/exodus-history-or-mythic-tale/"},{"title":"My Jewish Learning: Conquering Canaan","url":"https://www.myjewishlearning.com/article/conquering-canaan/"},{"title":"Britannica: Solomon","url":"https://www.britannica.com/biography/Solomon"},{"title":"Jewish Virtual Library: Jerusalem in the First Temple Period","url":"https://jewishvirtuallibrary.org/jerusalem-in-the-first-temple-period"},{"title":"Jewish Virtual Library: Hosea and Amos","url":"https://jewishvirtuallibrary.org/jsource/Judaism/Hosea_Amos.html"},{"title":"Jewish Virtual Library (Encyclopaedia Judaica): Exile, Babylonian","url":"https://jewishvirtuallibrary.org/jsource/judaica/ejud_0002_0006_0_06183.html"},{"title":"Chabad.org: The Discrepancy Between the Rabbinic and Secular Dates","url":"https://www.chabad.org/library/article_cdo/aid/2836156/jewish/The-Discrepancy-Between-the-Rabbinic-and-Secular-Dates.htm"},{"title":"ReformJudaism.org: Tishah B'Av","url":"https://reformjudaism.org/jewish-holidays/tishah-bav"},{"title":"Britannica: Babylonian Exile","url":"https://www.britannica.com/event/Babylonian-Exile"}]},{"n":4,"letter":"ד","title":"Второй Храм","he":"בית שני","desc":"Возвращение, разрушение, начало диаспоры","lessons":[{"id":"w4l1","title":"Возвращение","steps":[{"he":"כורש","h":"Кореш берёт Вавилон","p":"В 539 году до н. э. персидский царь Кореш (Кир Великий) взял Вавилон. Глиняный «цилиндр Кира», найденный в Вавилоне, сообщает, что Кореш вернул домой депортированные народы и их святыни; евреи там прямо не названы. Книга Эзры (Ездры) рассказывает, что Кореш разрешил евреям вернуться в Иерусалим и отстроить Храм (Эзра 1). Вернулись не все: большая община осталась в Вавилонии."},{"he":"בית שני","h":"Второй Храм","p":"Храм отстраивали долго. По книге Эзры (6:15), его завершили третьего числа месяца адар, на шестой год царя Дарьявеша (Дария). Историки соотносят эту дату с 516 или 515 годом до н. э. Так начинается эпоха Второго Храма, которая продлится почти шесть веков, до 70 года н. э."},{"h":"Эзра читает Тору","verse":{"he":"ויקראו בספר בתורת האלהים מפרש ושום שכל ויבינו במקרא","ru":"«И читали в книге, в Торе Б-жьей, внятно, и объясняли смысл, и поняли прочитанное» (Нехемия 8:8)"},"p":"Нехемия (Неемия) служил при дворе персидского царя Артахшасты (Артаксеркса) и попросил разрешения отстроить Иерусалим; стену, по его книге, закончили за 52 дня. В первый день седьмого месяца народ собрался у Водяных ворот, и Эзра, священник и книжник, читал Тору с утра до полудня, а левиты, служители Храма, объясняли."}],"check":{"q":"Кто, по книге Нехемии, публично читал Тору народу у Водяных ворот?","opts":["Нехемия","Кореш","Эзра","Дарьявеш"],"a":2,"why":"Эзра, священник и книжник, читал Тору с утра до полудня, а левиты объясняли смысл (Нехемия 8)."}},{"id":"w4l2","title":"Эллинизм и Хасмонеи","steps":[{"h":"Греки приходят на Восток","p":"В 330-е годы до н. э. Александр Македонский разгромил Персидскую державу, и Иудея оказалась в греческом мире. После его смерти империю поделили полководцы. Сначала Иудеей правили Птолемеи из Египта, а около 200 года до н. э. её захватили Селевкиды, цари со столицей в Сирии. Греческий язык и образ жизни, эллинизм, привлекали часть евреев."},{"he":"מכבים","h":"Восстание Маккавеев","p":"Селевкидский царь Антиох IV запретил соблюдать еврейские законы и осквернил Храм. В 167 году до н. э. в селении Модиин священник Матитьяху (Маттафия) отказался приносить языческую жертву и поднял восстание. Его сын Йегуда Маккавей (Иуда Маккавей) вернул Храм и 25-го числа месяца кислев освятил его заново. Обычно это датируют 164 годом до н. э., встречается и 165-й."},{"he":"חנוכה","h":"Ханука: два рассказа","p":"Первая книга Маккавеев говорит, что освящение праздновали восемь дней и постановили отмечать его каждый год; о чуде с маслом там нет ни слова. Рассказ о масле есть в Талмуде (Шаббат 21б): нашли один кувшин с печатью первосвященника, его хватало на день, а горело восемь. Семья стала династией Хасмонеев; её независимому правлению положил конец Рим в 63 году до н. э."}],"check":{"q":"В каком источнике рассказана история о кувшине масла, горевшем восемь дней?","opts":["В Первой книге Маккавеев","В Талмуде, трактат Шаббат 21б","В книге Нехемии","На цилиндре Кира"],"a":1,"why":"Первая книга Маккавеев описывает восьмидневное освящение Храма без чуда с маслом. Рассказ о масле приводит Талмуд."}},{"id":"w4l3","title":"Рим и течения","steps":[{"h":"Ирод и его Храм","p":"В 63 году до н. э. римский полководец Помпей взял Иерусалим. С 37 года до н. э. Иудеей правил Ирод Великий, царь, поставленный Римом. Он строил крепости, среди них Масаду, и около 20–19 годов до н. э. начал перестраивать Храм. Работы на храмовом комплексе шли ещё десятилетия."},{"he":"פרושים","h":"Три течения","p":"Иосиф Флавий, иудейский историк I века н. э., описывает три течения. Фарисеи (прушим) считали Устную Тору, устное объяснение закона, такой же обязательной, как Письменную, и верили в посмертное воздаяние; в раввинской традиции их учение связано и с воскресением мёртвых. Саддукеи (цдуким), круг храмовых священников и знати, признавали только Письменную Тору и отвергали воскресение. Ессеи жили замкнутыми общинами. Сочинений саддукеев не сохранилось, о них судят по описаниям оппонентов, поэтому историки читают эти описания осторожно."},{"he":"בית כנסת","h":"Свитки и синагога","p":"В 1947 году бедуинский пастух нашёл в пещере у Кумрана, у Мёртвого моря, древние свитки. Среди них рукописи книг Танаха, например полный свиток Исаии. Многие учёные связывают кумранскую общину с ессеями, но это обсуждается. В эпоху Второго Храма уже были синагоги. Само слово греческое и значит «собрание», на иврите «бейт кнесет». Там читали и изучали Тору и собирались общиной."}],"check":{"q":"Какое течение, по описаниям того времени, признавало только Письменную Тору?","opts":["Фарисеи","Ессеи","Маккавеи","Саддукеи"],"a":3,"why":"Саддукеи отвергали Устную Тору и воскресение мёртвых. Фарисеи считали Устную Тору обязательной."}},{"id":"w4l4","title":"Разрушение","steps":[{"he":"תשעה באב","h":"Великое восстание","p":"В 66 году н. э. Иудея восстала против Рима. Летом 70 года войска Тита, сына императора Веспасиана, взяли Иерусалим, и Храм сгорел. По Иосифу Флавию, Тит не хотел уничтожать Храм; многие историки в этом сомневаются. По традиции, оба Храма пали 9 ава, в Тиша бе-Ав (Мишна Таанит 4:6). Последней пала крепость Масада, в 73 или 74 году. По Иосифу Флавию, её защитники предпочли смерть плену."},{"he":"יבנה","h":"Явне","p":"Талмуд (Гиттин 56а–56б) рассказывает: во время осады ученики вынесли Рабана Йоханана бен Закая из города под видом покойника. Он пришёл к Веспасиану и среди прочего попросил: «Дай мне Явне и его мудрецов». Похожий рассказ есть в «Авот де-рабби Натан». Это поздние раввинские тексты, и многие историки считают рассказ преданием. Но именно в Явне мудрецы продолжили учить Тору, и иудаизм смог жить без Храма."},{"he":"גלות","h":"Бар-Кохба и галут","p":"В 132–135 годах н. э. шло восстание Бар-Кохбы. Его подавили, последней пала крепость Бейтар. Адриан основал на месте Иерусалима римский город Элию Капитолину (историки спорят, до восстания или после), а евреям, по сообщениям древних авторов, запретили жить в нём. Провинцию переименовали из Иудеи в Сирию-Палестину. Но диаспора, жизнь евреев вне Земли Израиля, началась раньше: большие общины давно жили в Вавилонии и Александрии. Утрату родины традиция называет словом «галут», изгнание."}],"check":{"q":"Что, по Талмуду, попросил Рабан Йоханан бен Закай у Веспасиана?","opts":["Отстроить Храм","«Дай мне Явне и его мудрецов»","Отдать ему Масаду","Отпустить всех пленных"],"a":1,"why":"Так рассказывает Гиттин 56б. Многие историки считают этот рассказ преданием, но Явне действительно стало центром учёбы после разрушения."}}],"quiz":[{"q":"Какой царь, взяв Вавилон в 539 году до н. э., по книге Эзры разрешил евреям вернуться?","opts":["Кореш (Кир Великий)","Навуходоносор","Антиох IV","Александр Македонский"],"a":0,"why":"Кореш взял Вавилон в 539 году до н. э. Книга Эзры (глава 1) приводит его указ о возвращении и строительстве Храма."},{"q":"Когда, по мнению историков, был завершён Второй Храм?","opts":["Около 586 года до н. э.","Около 444 года до н. э.","Около 164 года до н. э.","Около 516–515 годов до н. э."],"a":3,"why":"Эзра 6:15 называет шестой год царя Дарьявеша, что соответствует 516 или 515 году до н. э."},{"q":"Какое событие вспоминают в Хануку?","opts":["Возвращение из Вавилона","Новое освящение Храма после победы Маккавеев","Получение Торы на Синае","Постройку стены Иерусалима Нехемией"],"a":1,"why":"Йегуда Маккавей освятил Храм заново 25 кислева. Обычно это датируют 164 годом до н. э."},{"q":"Кто начал восстание против Антиоха IV в селении Модиин?","opts":["Ирод","Эзра","Священник Матитьяху (Маттафия)","Рабан Йоханан бен Закай"],"a":2,"why":"В 167 году до н. э. Матитьяху отказался приносить языческую жертву. Восстание продолжил его сын Йегуда Маккавей."},{"q":"Чем, по описаниям того времени, фарисеи отличались от саддукеев?","opts":["Считали Устную Тору такой же обязательной, как Письменную","Признавали только Письменную Тору","Считали необходимым жить в пустыне","Отказывались от Храма и праздников"],"a":0,"why":"Фарисеи считали Устную Тору обязательной, а саддукеи признавали только Письменную. Сочинений саддукеев не сохранилось, их взгляды известны по описаниям оппонентов."},{"q":"Что значит слово «синагога»?","opts":["«Храм»","«Свиток»","«Святилище»","«Собрание»"],"a":3,"why":"Слово греческое и значит «собрание». На иврите синагога называется «бейт кнесет», дом собрания."},{"q":"Кто командовал римлянами при взятии Иерусалима в 70 году н. э.?","opts":["Помпей","Адриан","Тит","Кореш"],"a":2,"why":"Тит, сын Веспасиана, взял Иерусалим летом 70 года. Помпей взял город раньше, в 63 году до н. э., а Адриан подавил восстание Бар-Кохбы."},{"q":"Как назывался римский город, который Адриан основал на месте Иерусалима?","opts":["Сирия-Палестина","Элия Капитолина","Кесария","Явне"],"a":1,"why":"Город стал Элией Капитолиной, а Сирией-Палестиной назвали всю провинцию вместо Иудеи. Историки спорят о точных датах этих перемен."}],"cards":[{"id":"w4c1","he":"בית שני","term":"Байит шени","def":"Второй Храм в Иерусалиме. Завершён около 516–515 годов до н. э., сожжён римлянами в 70 году н. э."},{"id":"w4c2","he":"חנוכה","term":"Ханука","def":"«Освящение». Восьмидневный праздник с 25 кислева в память о новом освящении Храма Маккавеями."},{"id":"w4c3","he":"מכבים","term":"Маккавеи","def":"Семья священника Матитьяху и его сыновей, поднявшая восстание против Антиоха IV в 167 году до н. э. Название идёт от прозвища Йегуды Маккавея."},{"id":"w4c4","he":"חשמונאים","term":"Хасмонеи","def":"Династия, выросшая из семьи Маккавеев. Правила Иудеей до вмешательства Рима в 63 году до н. э."},{"id":"w4c5","he":"פרושים","term":"Прушим (фарисеи)","def":"Течение эпохи Второго Храма. Считали Устную Тору обязательной; по раввинской традиции, верили в воскресение мёртвых."},{"id":"w4c6","he":"צדוקים","term":"Цдуким (саддукеи)","def":"Течение храмовых священников и знати. Признавали только Письменную Тору, отвергали воскресение мёртвых. Исчезли после 70 года н. э."},{"id":"w4c7","he":"איסיים","term":"Исиим (ессеи)","def":"Течение эпохи Второго Храма, жившее замкнутыми общинами. Многие учёные связывают с ними Кумран."},{"id":"w4c8","he":"בית כנסת","term":"Бейт кнесет","def":"«Дом собрания», синагога. Место, где читают и изучают Тору, молятся и собираются общиной."},{"id":"w4c9","he":"יבנה","term":"Явне","def":"Город, где после разрушения Храма Рабан Йоханан бен Закай и мудрецы продолжили учить Тору."},{"id":"w4c10","he":"מצדה","term":"Мецада (Масада)","def":"Крепость Ирода у Мёртвого моря. Последний оплот восставших, пала в 73 или 74 году н. э."},{"id":"w4c11","he":"תשעה באב","term":"Тиша бе-Ав","def":"9 ава, день траура. По традиции, в этот день разрушены оба Храма и пал Бейтар."},{"id":"w4c12","he":"גלות","term":"Галут","def":"Изгнание. Так называют жизнь народа вне Земли Израиля после утраты родины, прежде всего после разрушения Второго Храма."}],"sources":[{"title":"British Museum: The Cyrus Cylinder","url":"https://www.britishmuseum.org/collection/object/W_1880-0617-1941"},{"title":"Sefaria: Nehemiah 8","url":"https://www.sefaria.org/Nehemiah.8"},{"title":"Sefaria: Shabbat 21b","url":"https://www.sefaria.org/Shabbat.21b"},{"title":"Center for Online Judaic Studies: 1 Maccabees 4–6, The Rededication of the Temple","url":"https://cojs.org/?p=4426"},{"title":"Encyclopaedia Britannica: Synagogue","url":"https://www.britannica.com/topic/synagogue"},{"title":"My Jewish Learning: Let’s Talk About Sects","url":"https://www.myjewishlearning.com/article/lets-talk-about-sects/"},{"title":"Leon Levy Dead Sea Scrolls Digital Library: Discovery and Publication","url":"https://www.deadseascrolls.org.il/learn-about-the-scrolls/discovery-and-publication"},{"title":"Encyclopaedia Britannica: Judaism, the Temple and the synagogues","url":"https://britannica.com/topic/Judaism/Religious-rites-and-customs-in-Palestine-the-Temple-and-the-synagogues"},{"title":"Jewish Virtual Library: The Bar-Kokhba Revolt","url":"https://www.jewishvirtuallibrary.org/the-bar-kokhba-revolt-132-135-ce"},{"title":"EBSCO Research Starters: Johanan ben Zakkai","url":"https://www.ebsco.com/research-starters/biography/johanan-ben-zakkai/"}]},{"n":5,"letter":"ה","title":"Талмуд","he":"תלמוד","desc":"Устная Тора, Мишна, Гемара и искусство спора","lessons":[{"id":"w5l1","title":"Устная Тора","steps":[{"he":"תורה שבעל פה","h":"Две Торы","p":"По традиции у Синая Моше (Моисей) получил не только письменный текст Торы, но и устное объяснение к нему. Его называют «Тора ше-бе-аль пе», Устная Тора. Трактат Мишны Пиркей Авот начинается так: «Моше получил Тору с Синая и передал её Йегошуа (Иисусу Навину)», а тот передал старейшинам, и цепочка шла дальше (Пиркей Авот 1:1)."},{"h":"Зачем нужно объяснение","verse":{"he":"עין תחת עין שן תחת שן יד תחת יד רגל תחת רגל","ru":"«Глаз за глаз, зуб за зуб, рука за руку, нога за ногу» (Исх. 21:24)"},"p":"Если читать стих буквально, он требует отомстить тем же увечьем. Но Гемара в трактате Бава Кама (83б) отвергает такое прочтение: виновный платит пострадавшему деньги. Так этот закон понимает раввинская традиция. Пример показывает, как сильно смысл стиха зависит от устного толкования."},{"h":"Таннаи и амораи","p":"Эпоху мудрецов Мишны и Талмуда делят на два периода. Таннаи («учителя») — это мудрецы, чьи слова записаны в Мишне. Их эпоха длилась около двух веков и закончилась в начале III века н. э. Амораи — мудрецы, которые после них, примерно с 200 до 500 г. н. э., обсуждали Мишну в академиях Страны Израиля и Вавилонии. Их обсуждения легли в основу Гемары."}],"check":{"q":"Что, по традиции, Моше получил у Синая вместе с письменной Торой?","opts":["Устное объяснение к ней","Готовый текст Талмуда","Комментарий Раши","Список трактатов Мишны"],"a":0,"why":"По традиции вместе с текстом было дано устное объяснение, Тора ше-бе-аль пе. Талмуд и Раши появились много веков спустя."}},{"id":"w5l2","title":"Мишна","steps":[{"he":"משנה","h":"Устное учение записано","p":"После разрушения Второго Храма устное учение собрали и отредактировали. Около 200 г. н. э. эту работу завершил рабби Йегуда ха-Наси (Иуда Князь). Так появилась Мишна: первый большой свод раввинского права. Она стала основой, на которой построен весь Талмуд."},{"he":"שישה סדרים","h":"Шесть разделов","p":"Мишна делится на шесть седарим, разделов: Зраим (זרעים, «Семена») о земледелии и благословениях; Моэд (מועד, «Праздники») о субботе и праздниках; Нашим (נשים, «Женщины») о браке и семье; Незикин (נזיקין, «Ущербы») о гражданском и уголовном праве; Кодашим (קדשים, «Святыни») о жертвах и Храме; Тохорот (טהרות, «Чистота») о ритуальной чистоте. Разделы состоят из трактатов, масехтот: в принятом сейчас счёте их 63."},{"h":"Язык и голос меньшинства","p":"Мишна написана на мишнаитском иврите: это более поздняя форма иврита, чем библейский иврит. В ней много споров, и записаны не только решения, но и мнения меньшинства, хотя закон по ним не установлен. Сама Мишна объясняет, зачем: чтобы будущий суд, если сочтёт нужным, мог опереться на такое мнение (Мишна, трактат Эдуйот 1:5)."}],"check":{"q":"Сколько разделов (седарим) в Мишне?","opts":["Четыре","Шесть","Десять","Шестьдесят три"],"a":1,"why":"Разделов шесть: от Зраим до Тохорот. Число 63 — это трактаты внутри разделов."}},{"id":"w5l3","title":"Гемара и Талмуд","steps":[{"he":"גמרא","h":"Гемара и два Талмуда","p":"Гемара — это обсуждение Мишны, которое вели амораи. Мишна вместе с Гемарой составляет Талмуд. Гемара написана в основном на арамейском языке с вкраплениями иврита. Талмудов два: Иерусалимский сложился в Стране Израиля примерно к 400 г. н. э. Вавилонский в основном завершён около 500 г. н. э., хотя, по данным исследователей, его редактура продолжалась и позже. Главным стал Вавилонский."},{"he":"דף","h":"Как устроена страница","p":"В центре страницы Мишна и Гемара. На внутреннем поле, у переплёта, комментарий Раши (рабби Шломо Ицхаки, Франция, 1040–1105): он коротко объясняет слова и простой смысл. На внешнем поле Тосафот, «дополнения» учёных начиная с XII века, среди них зятья и внуки Раши. Лист называют даф, у него две стороны, а и б. «Бава Кама 83б» значит «лист 83, вторая сторона»."},{"he":"דף יומי","h":"Один лист в день","p":"В 1923 году на съезде движения Агудат Исраэль в Вене рабби Меир Шапиро предложил учить по одному листу Вавилонского Талмуда в день. Так появился Даф Йоми, «ежедневный лист». Цикл охватывает 2711 листов и занимает около семи с половиной лет."}],"check":{"q":"Где на странице Талмуда напечатан комментарий Раши?","opts":["В самом центре страницы","На внешнем поле","На внутреннем поле, у переплёта","В отдельном томе"],"a":2,"why":"Раши стоит на внутреннем поле. В центре Мишна и Гемара, на внешнем поле Тосафот."}},{"id":"w5l4","title":"Как устроен спор","steps":[{"he":"מחלוקת","h":"Спор ради Небес","p":"Махлокет значит «спор, разногласие». Мишна учит: «Всякий спор, который ради Небес, в конце концов устоит». И приводит пример: спор Гиллеля и Шаммая (Пиркей Авот 5:17). Спор ради Небес ведут ради истины, а не ради победы над соперником."},{"he":"אלו ואלו","h":"Гиллель и Шаммай","p":"Гиллель и Шаммай — современники, жившие на рубеже эр, во времена царя Ирода. Их школы, Бейт Гиллель и Бейт Шаммай, спорили более трёхсот раз. Талмуд рассказывает: после трёх лет спора голос с небес объявил, что и те, и другие говорят слова Б-га живого, но закон следует Бейт Гиллель. Причина: ученики Гиллеля были уживчивы и сдержанны, учили оба мнения и называли мнение Шаммая прежде своего (Эрувин 13б, пересказ). Мнения Шаммая тоже сохранены в тексте."},{"he":"חברותא","h":"Учиться вдвоём","p":"Хаврута (по-арамейски «товарищество») — это пара, которая учит текст вместе: читают, спорят, задают вопросы, проверяют друг друга. Вопрос здесь главный метод. Талмуд рассказывает, что рабби Йоханан ценил своего товарища по учёбе Реш Лакиша за то, что тот выдвигал на каждое его слово 24 возражения, а он отвечал на каждое 24 ответами, и от этого учение становилось шире (Бава Мециа 84а)."}],"check":{"q":"Почему, по рассказу в Эрувин 13б, закон следует Бейт Гиллель?","opts":["Их решения были строже","Они были старше Бейт Шаммай","Так решил царь Ирод","Они были сдержанны и называли мнение Шаммая прежде своего"],"a":3,"why":"Талмуд объясняет решение характером учеников Гиллеля: уживчивостью, сдержанностью и уважением к оппонентам. При этом обе стороны названы словами Б-га живого."}}],"quiz":[{"q":"Как раввинская традиция понимает закон «глаз за глаз»?","opts":["Как буквальное наказание тем же увечьем","Как денежную компенсацию пострадавшему","Как изгнание виновного","Как совет простить без последствий"],"a":1,"why":"Гемара (Бава Кама 83б) отвергает буквальное прочтение: виновный платит пострадавшему деньги."},{"q":"Кого называют таннаями?","opts":["Авторов комментария Тосафот","Учеников рабби Меира Шапиро","Мудрецов, чьи слова записаны в Мишне","Мудрецов, создавших Гемару в Вавилонии"],"a":2,"why":"Таннаи — мудрецы эпохи Мишны, до начала III века н. э. Гемару создавали следующие поколения, амораи."},{"q":"Кто около 200 г. н. э. завершил Мишну?","opts":["Гиллель","Раши","Рабби Йоханан","Рабби Йегуда ха-Наси"],"a":3,"why":"Мишну завершил рабби Йегуда ха-Наси. Гиллель жил раньше, рабби Йоханан был амораем, Раши жил в 1040–1105 годах."},{"q":"Зачем, по словам самой Мишны, в ней записаны мнения меньшинства?","opts":["Чтобы будущий суд мог при необходимости на них опереться","Чтобы закон всегда решали по меньшинству","Потому что их нельзя было забыть по закону","Чтобы заполнить пустое место"],"a":0,"why":"Так объясняет Мишна в трактате Эдуйот 1:5: суд может предпочесть мнение одного и опереться на него."},{"q":"На каком языке в основном написана Гемара?","opts":["На библейском иврите","На арамейском","На греческом","На латыни"],"a":1,"why":"Гемара написана в основном на арамейском с вкраплениями иврита. Мишна же написана на мишнаитском иврите."},{"q":"Что такое Даф Йоми?","opts":["Комментарий на внешнем поле страницы","Иерусалимский Талмуд","Раздел Мишны о праздниках","Учёба по одному листу Талмуда в день"],"a":3,"why":"Даф Йоми предложил рабби Меир Шапиро в 1923 году. Полный цикл занимает около семи с половиной лет."},{"q":"Чему следует закон в спорах Бейт Гиллель и Бейт Шаммай?","opts":["Как правило, мнению Бейт Гиллель","Как правило, мнению Бейт Шаммай","Решению царя","Жребию"],"a":0,"why":"По рассказу в Эрувин 13б, голос с небес назвал оба мнения словами Б-га живого, а закон установил по Бейт Гиллель. Мнения Шаммая при этом сохранены."},{"q":"Что такое хаврута?","opts":["Сборник законов о субботе","Голос с небес","Пара, которая учит текст вместе","Поле страницы Талмуда"],"a":2,"why":"Хаврута — учёба вдвоём: партнёры читают, спорят и задают друг другу вопросы."}],"cards":[{"id":"w5c1","he":"תורה שבעל פה","term":"Тора ше-бе-аль пе","def":"Устная Тора. По традиции объяснение к письменной Торе, данное у Синая и передававшееся из уст в уста."},{"id":"w5c2","he":"תנאים","term":"Таннаи","def":"«Учителя». Мудрецы, чьи слова записаны в Мишне. Их эпоха закончилась в начале III века н. э."},{"id":"w5c3","he":"אמוראים","term":"Амораи","def":"Мудрецы после таннаев, примерно 200–500 г. н. э., обсуждавшие Мишну в Стране Израиля и Вавилонии."},{"id":"w5c4","he":"משנה","term":"Мишна","def":"Свод устного учения, завершённый рабби Йегудой ха-Наси около 200 г. н. э. Шесть разделов, 63 трактата в принятом сейчас счёте."},{"id":"w5c5","he":"סדר","term":"Седер (мн. седарим)","def":"Раздел Мишны. Их шесть: Зраим, Моэд, Нашим, Незикин, Кодашим, Тохорот."},{"id":"w5c6","he":"מסכת","term":"Масехет (мн. масехтот)","def":"Трактат, часть раздела Мишны и Талмуда. Например, Бава Кама или Эрувин."},{"id":"w5c7","he":"גמרא","term":"Гемара","def":"Обсуждение Мишны амораями, в основном на арамейском. Вместе с Мишной составляет Талмуд."},{"id":"w5c8","he":"תלמוד בבלי","term":"Талмуд Бавли","def":"Вавилонский Талмуд, в основном завершён около 500 г. н. э. Главный и самый изучаемый из двух Талмудов."},{"id":"w5c9","he":"דף","term":"Даф","def":"Лист Талмуда. У него две стороны, а и б: «83б» значит «лист 83, вторая сторона»."},{"id":"w5c10","he":"תוספות","term":"Тосафот","def":"«Дополнения». Аналитические заметки учёных начиная с XII века на внешнем поле страницы Талмуда."},{"id":"w5c11","he":"מחלוקת","term":"Махлокет","def":"Спор, разногласие мудрецов. Спор «ради Небес» ведут ради истины (Пиркей Авот 5:17)."},{"id":"w5c12","he":"חברותא","term":"Хаврута","def":"По-арамейски «товарищество». Учёба в паре, где партнёры читают, спорят и задают друг другу вопросы."}],"sources":[{"title":"Encyclopaedia Britannica: Mishna","url":"https://www.britannica.com/topic/Mishna"},{"title":"Encyclopaedia Britannica: amora","url":"https://www.britannica.com/topic/amora"},{"title":"Jewish Virtual Library: Mishnah","url":"https://www.jewishvirtuallibrary.org/mishnah"},{"title":"Mishnah.org: Eduyot 1:5","url":"https://www.mishnah.org/learn/eduyos/1/5"},{"title":"My Jewish Learning: Hillel","url":"https://www.myjewishlearning.com/article/hillel/"},{"title":"Jewish Virtual Library: Hillel and Shammai","url":"https://www.jewishvirtuallibrary.org/hillel-and-shammai"},{"title":"Encyclopedia.com: Gemarah","url":"https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/gemarah"},{"title":"Hadran: The Layout of a Talmud Page","url":"https://hadran.org.il/terms/the-layout-of-a-talmud-page/"},{"title":"Steinsaltz Center: History of the Daf Yomi","url":"https://steinsaltz.org/daf-history/"},{"title":"Tablet: Is An Eye for an Eye Really an Eye for an Eye?","url":"https://www.tabletmag.com/sections/belief/articles/daf-yomi-176"}]},{"n":6,"letter":"ו","title":"Время и практика","he":"שבת","desc":"Шаббат, календарь, праздники, кашрут","lessons":[{"id":"w6l1","title":"Шаббат","steps":[{"he":"שבת","h":"Седьмой день","verse":{"he":"ויברך אלהים את יום השביעי ויקדש אתו","ru":"«И благословил Б-г седьмой день, и освятил его» (Быт. 2:3)"},"p":"По Торе, Б-г творил мир шесть дней, а в седьмой прекратил работу. В Десяти речениях заповедь начинается словом «захор», «помни» (Исх. 20:8), и там же названа причина: отдых Б-га после творения (Исх. 20:11). Во Второзаконии заповедь начинается словом «шамор», «храни» (Втор. 5:12), и добавлен другой смысл: дать покой рабам и животным, помня рабство в Египте."},{"h":"От заката до темноты","p":"Шаббат длится от заката в пятницу до наступления темноты в субботу вечером. В традиционной практике перед закатом зажигают свечи. За ужином произносят кидуш, благословение над вином, которое освящает день, и благословляют две халы. По объяснению традиции, это память о двойной порции манны накануне субботы (Исх. 16:22). Завершает Шаббат обряд авдала, «разделение»."},{"he":"מלאכה","h":"39 видов работы","p":"Тора запрещает в Шаббат работу, а подробный перечень дают мудрецы. Мишна (Шаббат 7:2) называет 39 категорий, мелахот: пахать, печь, ткать, писать, строить, зажигать и гасить огонь, переносить вещи между владениями. Талмуд связывает их с работами при постройке Мишкана, святилища в пустыне. Ортодоксальные общины держатся этих запретов. Консервативное движение в 1950 году разрешило ездить в синагогу тем, кому иначе не добраться, и это решение до сих пор обсуждают. Реформистский иудаизм оставляет формы соблюдения на выбор человека."}],"check":{"q":"Сколько основных категорий запрещённой в Шаббат работы называет Мишна?","opts":["Десять","39","248","613"],"a":1,"why":"Мишна Шаббат 7:2 перечисляет 39 мелахот. Талмуд связывает их с работами при постройке Мишкана."}},{"id":"w6l2","title":"Календарь","steps":[{"he":"לוח השנה","h":"Луна и солнце","p":"Еврейский календарь лунно-солнечный. Месяц идёт за луной и длится 29 или 30 дней, а год подстраивается под солнце, чтобы праздники оставались в своих сезонах. По традиции сутки начинаются с вечера: мудрецы связывают это с порядком слов в рассказе о творении «и был вечер, и было утро, день один» (Быт. 1:5). Поэтому Шаббат и любой праздник начинаются накануне вечером."},{"he":"ראש חודש","h":"Рош Ходеш","p":"Каждый месяц начинается с новолуния. Этот день называют Рош Ходеш, «голова месяца». В эпоху Храма в этот день приносили особую жертву, о ней говорит Тора (Числ. 28:11–15). Если в предыдущем месяце было 30 дней, Рош Ходеш длится два дня: тридцатое число и первое число нового месяца."},{"h":"Високосный год и счёт лет","p":"Двенадцать лунных месяцев примерно на 11 дней короче солнечного года. Поэтому в 7 годах из каждых 19 добавляют тринадцатый месяц, и в году два адара: адар I и адар II. Постоянный расчётный календарь традиция связывает с Гиллелем II (IV век н. э.). Годы считают от сотворения мира, по традиционной хронологии это 3761 год до н. э. С Рош ха-Шана в сентябре 2026 года идёт 5787 год, а 5788 начнётся осенью 2027-го."}],"check":{"q":"Сколько раз за 19 лет в календарь добавляют тринадцатый месяц?","opts":["Один","Три","Пять","Семь"],"a":3,"why":"В 7 годах из 19 добавляют месяц, и в таком году два адара. Так лунные месяцы не отстают от солнечного года."}},{"id":"w6l3","title":"Праздники","steps":[{"he":"תשרי","h":"Осень: месяц тишрей","p":"Рош ха-Шана, 1 тишрея, — Новый год и день суда. В синагоге трубят в шофар, рог. Рош ха-Шана открывает десять дней покаяния. Их завершает Йом-Кипур, 10 тишрея, самый святой день года, день поста и молитвы. С 15 тишрея семь дней длится Суккот: едят в шалаше, сукке. Тора объясняет, что после исхода из Египта израильтяне жили в шалашах (Лев. 23:43). Затем Симхат Тора, «радость Торы»: годовой цикл чтения Торы заканчивают и начинают заново."},{"he":"שלוש רגלים","h":"Песах, Шавуот и паломничество","p":"Песах начинается 15 нисана и вспоминает исход из Египта: едят мацу, а праздник открывает седер, ритуальная трапеза. Через семь недель, 6 сивана, наступает Шавуот (в диаспоре ещё и 7 сивана), праздник жатвы пшеницы, который традиция связывает с дарованием Торы. Вместе с Суккот это три паломнических праздника, шалош регалим (Втор. 16:16). В Израиле Песах длится семь дней, в диаспоре восемь: в древности весть о новом месяце доходила до дальних общин не сразу, и там праздничный день стали удваивать."},{"h":"Ханука, Пурим, Тиша бе-Ав","p":"Ханука начинается 25 кислева и длится восемь дней. Она вспоминает новое освящение Второго Храма Маккавеями во II веке до н. э.; по принятому обычаю, каждый вечер зажигают на один огонь больше. Пурим, 14 адара, празднует спасение евреев Персии от замысла Амана, о котором рассказывает Книга Эстер. Тиша бе-Ав, 9 ава, — день траура и поста в память о разрушении Первого и Второго Храмов."}],"check":{"q":"Какие праздники называют тремя паломническими?","opts":["Рош ха-Шана, Йом-Кипур, Суккот","Ханука, Пурим, Песах","Песах, Шавуот, Суккот","Шавуот, Ханука, Тиша бе-Ав"],"a":2,"why":"Втор. 16:16 называет три праздника, когда в эпоху Храма приходили в Иерусалим: Песах, Шавуот и Суккот."}},{"id":"w6l4","title":"Кашрут","steps":[{"he":"כשרות","h":"Признаки животных","p":"Кашрут — правила о том, что можно есть. По Торе (Лев. 11:3, Втор. 14:6) из млекопитающих разрешены те, у кого раздвоенные копыта и кто жуёт жвачку; нужны оба признака. Свинья с раздвоенными копытами, но без жвачки запрещена. Из водных животных можно есть лишь тех, у кого есть плавники и чешуя (Лев. 11:9), поэтому креветки и моллюски некошерны. Из птиц разрешены только некоторые виды. Течения по-разному смотрят на то, насколько строго соблюдать кашрут."},{"he":"שחיטה","h":"Кровь и шхита","p":"Тора запрещает есть кровь, потому что «кровь — это жизнь» (Втор. 12:23; также Лев. 17:14). В традиционной практике разрешённое животное забивает обученный резник, шохет. Способ называется шхита: очень острый гладкий нож и быстрый разрез без остановки. Затем мясо вымачивают и солят, чтобы удалить остатки крови. Если шхита проведена не по правилам, мясо считается некошерным."},{"h":"Мясное и молочное","verse":{"he":"לא תבשל גדי בחלב אמו","ru":"«Не вари козлёнка в молоке его матери» (Исх. 23:19)"},"p":"Запрет варить козлёнка в молоке его матери повторён в Торе трижды: Исх. 23:19, Исх. 34:26 и Втор. 14:21. Раввинская традиция расширила его до разделения: мясное и молочное не едят вместе и держат для них отдельную посуду, а нейтральная еда, парве, подходит к обоим. После мяса до молочного ждут, в разных общинах от одного часа до шести. Пригодность продукта подтверждает раввинский надзор, его знак на упаковке называют хехшер."}],"check":{"q":"Какие обитатели воды разрешены по Торе?","opts":["Все рыбы без исключения","Те, у кого есть плавники и чешуя","Только морские, но не речные","Любые, если их поймали сетью"],"a":1,"why":"Лев. 11:9 и Втор. 14:9: разрешены те, у кого есть плавники и чешуя. Поэтому креветки и моллюски некошерны."}}],"quiz":[{"q":"Когда заканчивается Шаббат?","opts":["В полночь с субботы на воскресенье","На рассвете в субботу","Когда в субботу вечером наступает темнота","В полдень субботы"],"a":2,"why":"Шаббат длится от заката в пятницу до наступления темноты в субботу вечером."},{"q":"Как традиция объясняет две халы на субботнем столе?","opts":["Одну полагается отдать гостю","Это память о двойной порции манны накануне субботы","Их число равно числу свечей","Шаббат длится два дня"],"a":1,"why":"По Исх. 16:22 в шестой день в пустыне собирали манну вдвойне, чтобы не собирать её в субботу."},{"q":"Какой год по еврейскому счёту начался в Рош ха-Шана в сентябре 2026 года?","opts":["5785","5786","5788","5787"],"a":3,"why":"Номер года сменяется в Рош ха-Шана, поэтому 5788 начнётся осенью 2027-го."},{"q":"Когда, по традиции, начинаются сутки в еврейском календаре?","opts":["Вечером","В полночь","На рассвете","В полдень"],"a":0,"why":"По традиции сутки начинаются с вечера; мудрецы связывают это с порядком слов «и был вечер, и было утро, день один» (Быт. 1:5). Поэтому Шаббат и праздники начинаются накануне вечером."},{"q":"Что вспоминают в Тиша бе-Ав?","opts":["Дарование Торы","Разрушение Первого и Второго Храмов","Исход из Египта","Спасение евреев Персии"],"a":1,"why":"9 ава — день траура и поста по обоим разрушенным Храмам. Исход вспоминают в Песах, спасение евреев Персии в Пурим."},{"q":"Какой праздник приходится на 10 тишрея?","opts":["Рош ха-Шана","Суккот","Йом-Кипур","Симхат Тора"],"a":2,"why":"Йом-Кипур, День искупления, завершает десять дней покаяния, которые открывает Рош ха-Шана 1 тишрея."},{"q":"Где в Торе стоит запрет варить козлёнка в молоке его матери?","opts":["Быт. 2:3, Исх. 20:8, Лев. 11:3","Лев. 11:9, Лев. 17:14, Втор. 12:23","Исх. 16:22, Исх. 20:11, Втор. 5:12","Исх. 23:19, Исх. 34:26, Втор. 14:21"],"a":3,"why":"Запрет повторён трижды. Опираясь на него, раввинская традиция расширила запрет до разделения мясного и молочного."},{"q":"Почему свинья некошерна по Торе?","opts":["У неё раздвоенные копыта, но она не жуёт жвачку","У неё совсем нет копыт","Она живёт рядом с водой","Она жуёт жвачку, но копыта у неё не раздвоены"],"a":0,"why":"Нужны оба признака: раздвоенные копыта и жвачка (Лев. 11:3). У свиньи есть только первый."}],"cards":[{"id":"w6c1","he":"שבת","term":"Шаббат","def":"Седьмой день недели, день покоя. Длится от заката в пятницу до наступления темноты в субботу вечером."},{"id":"w6c2","he":"מלאכה","term":"Мелаха","def":"Вид работы, запрещённой в Шаббат. Мишна (Шаббат 7:2) называет 39 основных категорий, мелахот."},{"id":"w6c3","he":"קידוש","term":"Кидуш","def":"«Освящение». Благословение над вином, которое освящает Шаббат или праздник."},{"id":"w6c4","he":"חלה","term":"Хала","def":"Субботний хлеб. По обычаю на стол кладут две халы в память о двойной порции манны накануне субботы."},{"id":"w6c5","he":"הבדלה","term":"Авдала","def":"«Разделение». Обряд в субботу вечером, отделяющий Шаббат от будней."},{"id":"w6c6","he":"ראש חודש","term":"Рош Ходеш","def":"«Голова месяца». Начало месяца по новолунию."},{"id":"w6c7","he":"יום כיפור","term":"Йом-Кипур","def":"День искупления, 10 тишрея. Самый святой день года, день поста и молитвы."},{"id":"w6c8","he":"סוכה","term":"Сукка","def":"Шалаш, в котором едят в праздник Суккот. Тора связывает его с жизнью израильтян в шалашах после исхода из Египта (Лев. 23:43)."},{"id":"w6c9","he":"שלוש רגלים","term":"Шалош регалим","def":"Три паломнических праздника: Песах, Шавуот и Суккот. В эпоху Храма в эти дни приходили в Иерусалим."},{"id":"w6c10","he":"כשרות","term":"Кашрут","def":"Правила о том, какую пищу можно есть и как её готовить. Основа в Лев. 11 и Втор. 14."},{"id":"w6c11","he":"שחיטה","term":"Шхита","def":"Забой разрешённого животного обученным резником, шохетом: очень острый гладкий нож, быстрый разрез без остановки."},{"id":"w6c12","he":"הכשר","term":"Хехшер","def":"Свидетельство раввинского надзора о том, что продукт кошерный. Обычно печатается знаком на упаковке."}],"sources":[{"title":"Encyclopaedia Britannica: Sabbath","url":"https://www.britannica.com/topic/Sabbath-Judaism"},{"title":"My Jewish Learning: Shabbat in the Bible","url":"https://www.myjewishlearning.com/article/shabbat-in-the-bible/"},{"title":"Chabad.org: The 39 Melachot","url":"https://www.chabad.org/library/article_cdo/aid/102032/jewish/The-39-Melachot.htm"},{"title":"Chabad.org: The Jewish Calendar","url":"https://www.chabad.org/library/article_cdo/aid/526875/jewish/The-Jewish-Calendar.htm"},{"title":"Jewish Virtual Library: The Jewish Calendar","url":"https://www.jewishvirtuallibrary.org/the-jewish-calendar"},{"title":"Hebcal: Pesach","url":"https://www.hebcal.com/holidays/pesach"},{"title":"Hebcal: Sukkot","url":"https://www.hebcal.com/holidays/sukkot"},{"title":"My Jewish Learning: Why Does Rosh Hashanah Last for Two Days?","url":"https://www.myjewishlearning.com/article/why-does-rosh-hashanah-last-for-two-days/"},{"title":"Encyclopaedia Britannica: Kashruth","url":"https://www.britannica.com/topic/kashruth"},{"title":"My Jewish Learning: Waiting Between Eating Meat and Dairy","url":"https://www.myjewishlearning.com/article/waiting-between-eating-meat-and-dairy/"}]},{"n":7,"letter":"ז","title":"Диаспора","he":"גלות","desc":"Маймонид, Испания, Каббала, хасидизм и Просвещение","lessons":[{"id":"w7l1","title":"Маймонид","steps":[{"he":"רמב״ם","h":"Врач, законоучитель, философ","p":"Моше бен Маймон (Моисей Маймонид), коротко Рамбам, родился в Кордове, в мусульманской Испании. Год рождения источники дают по-разному: 1135 или 1138. Около 1148 года власть захватили Альмохады и потребовали от иноверцев принять ислам. Семья Рамбама уехала, жила в Фесе, а затем он поселился в Египте. Там он умер в 1204 году. По преданию, его похоронили в Тверии."},{"he":"משנה תורה","h":"Две главные книги","p":"Мишне Тора — свод всего еврейского закона в 14 книгах, написанный на ясном иврите. Работа заняла около десяти лет и была завершена около 1180 года. «Путеводитель растерянных» («Море невухим») написан по-арабски и закончен около 1190 года. В нём Рамбам стремится совместить Тору и философию."},{"h":"13 принципов и наследие","p":"В комментарии к Мишне Рамбам свёл основы веры в 13 принципов. На их основе сложены гимн «Игдаль» и молитва «Ани маамин» («Я верую»). В Египте он был придворным врачом: лечил визиря султана Саладина и семью самого султана. Его книги не все приняли сразу: в 1232 году часть раввинов во Франции запретила читать его философские сочинения. Позже сложилась поговорка: «От Моше до Моше не было подобного Моше»."}],"check":{"q":"На каком языке написан «Путеводитель растерянных»?","opts":["На иврите","На арабском","На арамейском","На латыни"],"a":1,"why":"Путеводитель написан по-арабски. А Мишне Тору Рамбам написал на иврите."}},{"id":"w7l2","title":"Сфарад и Ашкеназ","steps":[{"he":"ספרד","h":"Золотой век Испании","p":"Сфарад на иврите значит «Испания». В XI–XII веках в Испании, прежде всего мусульманской, расцвела поэзия на иврите. Шмуэль ха-Нагид был визирем Гранады и командовал её армией. Шломо ибн Гвироль написал «Кетер малхут» («Царский венец»), его читают в некоторых общинах на Йом-Кипур. Йегуда Галеви писал стихи о Сионе и книгу «Кузари»."},{"he":"אשכנז","h":"Раши и Рейн","p":"Ашкеназ в средневековых текстах значит «Германия». Еврейская учёность выросла в городах на Рейне: Майнце и Вормсе. Там учился Шломо Ицхаки (Раши, 1040–1105) из Труа во Франции. Его комментарии к Танаху и Талмуду изучают до сих пор. В 1096 году участники Первого крестового похода разгромили общины Шпайера, Вормса и Майнца. Многие предпочли смерть крещению: это называют «кидуш ха-Шем», освящение Имени."},{"h":"Две традиции и два языка","p":"31 марта 1492 года Фердинанд и Изабелла приказали евреям Испании креститься или уехать до конца июля. Оценки числа изгнанных сильно расходятся. Многие ушли в Португалию (там в 1497 году евреев изгнали или насильно крестили), в Северную Африку и Османскую империю. Сефарды и ашкеназы различаются обычаями, а не верой. Ашкеназы говорили на идише (основа германская), сефарды на ладино (основа испанская). Оба языка традиционно пишутся еврейскими буквами."}],"check":{"q":"Что значит слово «Ашкеназ» в средневековых еврейских текстах?","opts":["Испания","Франция","Германия","Польша"],"a":2,"why":"Ашкеназ — Германия, отсюда «ашкеназы». Сфарад — Испания, отсюда «сефарды»."}},{"id":"w7l3","title":"Каббала","steps":[{"he":"קבלה","h":"Принятое предание","p":"Каббала значит «получение», то есть полученная традиция. Так называют еврейскую мистику. Б-г, как Он есть сам по себе, называется Эйн Соф, «Бесконечный»: Он непостижим. От Него исходят десять сфирот, ступеней или сил, через которые Б-г проявляется в мире."},{"he":"זוהר","h":"Книга Зоар","p":"Главная книга Каббалы — Зоар, в основном мистический комментарий к Торе на арамейском. По традиции, это учение рабби Шимона бар Йохая, мудреца II века, и его учеников. По мнению историков, книга создана в Испании в конце XIII века, скорее всего каббалистом Моше де Леоном (часть учёных видит автором круг мистиков)."},{"he":"צפת","h":"Цфат XVI века","p":"В XVI веке Цфат в Галилее стал центром Каббалы. Около 1570 года туда прибыл Ицхак Лурия (1534–1572), Ари. Сам он писал мало, его учение записал ученик Хаим Виталь. По Лурии, свет Б-га не удержался в «сосудах», они разбились, и искры света рассеялись. Тикун, «исправление», возвращает их к источнику, и человек участвует в нём молитвой. В Цфате жил и Йосеф Каро, автор Шулхан Аруха."}],"check":{"q":"Кому традиция приписывает книгу Зоар?","opts":["Моше де Леону","Рамбаму","Ицхаку Лурии","Рабби Шимону бар Йохаю"],"a":3,"why":"По традиции, Зоар передаёт учение Шимона бар Йохая. Многие историки считают автором Моше де Леона, жившего в Испании в конце XIII века."}},{"id":"w7l4","title":"Хасидизм и Просвещение","steps":[{"he":"בעל שם טוב","h":"Бааль Шем Тов","p":"Исраэль бен Элиэзер (около 1700–1760), известный как Бааль Шем Тов, жил на Подолье и умер в Меджибоже. Он основал хасидизм. Бешт (так его называют сокращённо) учил, что Б-гу служат в радости, что главное — молитва с воодушевлением и двекут, близость к Б-гу. Святость можно найти и в обычной жизни."},{"he":"מתנגדים","h":"Хасиды и митнагдим","p":"Знатоки Талмуда встретили новое движение с тревогой. Их назвали митнагдим, «противники». Их главным вдохновителем стал Элиягу бен Шломо, Виленский Гаон (1720–1797) из Литвы. Митнагдим ставили в центр изучение Талмуда."},{"he":"השכלה","h":"Хаскала и эмансипация","p":"Хаскала, еврейское Просвещение, от слова «сехель», «разум». Её отцом считают Моше Мендельсона (Моисея Мендельсона, 1729–1786) из Дессау, жившего в Берлине. Он перевёл Тору на немецкий. Сторонники Хаскалы, маскилим, добавляли к учёбе светские науки и европейские языки. Эмансипация — уравнение евреев в правах с другими гражданами. Во Франции закон 1791 года дал равные права всем евреям страны. О течениях XIX века речь пойдёт на неделе 8."}],"check":{"q":"Что значит слово «митнагдим»?","opts":["«Противники»","«Благочестивые»","«Просвещённые»","«Ученики»"],"a":0,"why":"Митнагдим — «противники» хасидизма. «Благочестивые» ближе к слову «хасидим», а «просвещённые» — маскилим."}}],"quiz":[{"q":"Что такое Мишне Тора?","opts":["Философская книга на арабском","Свод еврейского закона в 14 книгах","Комментарий к Зоару","Сборник стихов о Сионе"],"a":1,"why":"Мишне Тора — кодекс Рамбама на иврите, завершён около 1180 года. Философская книга на арабском — это «Путеводитель растерянных»."},{"q":"Где Рамбам прожил последние десятилетия жизни и работал врачом?","opts":["В Кордове","В Цфате","В Труа","В Египте"],"a":3,"why":"Рамбам поселился в Египте и был придворным врачом. Кордова — его родной город, где он родился в 1135 или 1138 году."},{"q":"Какой поэт золотого века был визирем Гранады и командовал её армией?","opts":["Шмуэль ха-Нагид","Йегуда Галеви","Шломо ибн Гвироль","Раши"],"a":0,"why":"Шмуэль ха-Нагид совмещал власть и поэзию. Ибн Гвироль и Галеви были поэтами, а Раши был комментатором из Франции."},{"q":"Чем ладино отличается от идиша?","opts":["Ладино возник в Польше, а идиш в Испании","На ладино говорили ашкеназы, на идише сефарды","Ладино имеет испанскую основу, идиш германскую","Ладино — древний язык Торы"],"a":2,"why":"Ладино — язык сефардов на испанской основе, идиш — язык ашкеназов на германской. Оба традиционно пишутся еврейскими буквами."},{"q":"Что означает Эйн Соф в Каббале?","opts":["Десять ступеней проявления Б-га","Б-г как Он есть сам по себе, «Бесконечный»","Разбитые сосуды","Город мистиков в Галилее"],"a":1,"why":"Эйн Соф — «Бесконечный», непостижимый Б-г. Десять ступеней — это сфирот, разбитые сосуды — образ из учения Лурии."},{"q":"Что по учению Лурии означает тикун?","opts":["Изгнание из Испании","Запрет изучать философию","Перевод Торы на немецкий","Исправление: возвращение рассеянных искр к источнику"],"a":3,"why":"Тикун — «исправление». Человек участвует в нём молитвой."},{"q":"Что Бааль Шем Тов ставил в центр служения Б-гу?","opts":["Строгий пост и печаль","Только изучение философии","Радость и молитву с воодушевлением","Отказ от обычной жизни"],"a":2,"why":"Бешт учил служить Б-гу в радости и видел главное в молитве и близости к Б-гу, двекут."},{"q":"Кого называют отцом Хаскалы, еврейского Просвещения?","opts":["Моше Мендельсона","Виленского Гаона","Бааль Шем Това","Йосефа Каро"],"a":0,"why":"Моше Мендельсон (1729–1786) жил в Берлине и перевёл Тору на немецкий. Виленский Гаон возглавлял противников хасидизма."}],"cards":[{"id":"w7c1","he":"גלות","term":"Галут","def":"Изгнание. Положение народа, оторванного от родины и живущего под чужой властью. Так прежде всего называют период еврейской истории от разрушения Второго Храма до создания Государства Израиль."},{"id":"w7c2","he":"רמב״ם","term":"Рамбам","def":"Рабби Моше бен Маймон, Маймонид (1135 или 1138 – 1204). Автор Мишне Торы и «Путеводителя растерянных»."},{"id":"w7c3","he":"משנה תורה","term":"Мишне Тора","def":"Свод еврейского закона Рамбама в 14 книгах на иврите, завершён около 1180 года."},{"id":"w7c4","he":"מורה נבוכים","term":"Море невухим","def":"«Путеводитель растерянных». Философская книга Рамбама на арабском, закончена около 1190 года."},{"id":"w7c5","he":"ספרדים","term":"Сефарды","def":"Евреи, чьи предки жили в Испании (Сфарад) и Португалии. Традиционный язык — ладино."},{"id":"w7c6","he":"אשכנזים","term":"Ашкеназы","def":"Евреи, чья традиция восходит к общинам Германии (Ашкеназ) и Рейна. Традиционный язык — идиш."},{"id":"w7c7","he":"קידוש השם","term":"Кидуш ха-Шем","def":"«Освящение Имени». Готовность умереть, но не отречься от веры, как в Рейнской области в 1096 году."},{"id":"w7c8","he":"קבלה","term":"Каббала","def":"«Получение», принятое предание. Еврейская мистическая традиция."},{"id":"w7c9","he":"ספירות","term":"Сфирот","def":"Десять ступеней или сил, исходящих от Эйн Соф, через которые, по Каббале, Б-г проявляется в мире."},{"id":"w7c10","he":"תיקון","term":"Тикун","def":"«Исправление». У Лурии: возвращение рассеянных искр Б-жественного света к источнику."},{"id":"w7c11","he":"שולחן ערוך","term":"Шулхан Арух","def":"«Накрытый стол». Кодекс галахи Йосефа Каро из Цфата, XVI век; издан в Венеции в 1560-е годы."},{"id":"w7c12","he":"השכלה","term":"Хаскала","def":"Еврейское Просвещение XVIII–XIX веков, от слова «сехель», «разум». Её отцом считают Моше Мендельсона."}],"sources":[{"title":"Jewish Virtual Library: Moses Maimonides (Rambam)","url":"https://www.jewishvirtuallibrary.org/moses-maimonides-rambam"},{"title":"Stanford Encyclopedia of Philosophy: Maimonides","url":"https://plato.stanford.edu/entries/maimonides/"},{"title":"Encyclopaedia Judaica (encyclopedia.com): Samuel ha-Nagid","url":"https://www.encyclopedia.com/religion/dictionaries-thesauruses-pictures-and-press-releases/samuel-ha-nagid"},{"title":"Jewish Virtual Library: Rashi","url":"https://www.jewishvirtuallibrary.org/rashi"},{"title":"Jewish Virtual Library: The Crusades","url":"https://www.jewishvirtuallibrary.org/the-crusades"},{"title":"Jewish Virtual Library: Sephardim","url":"https://www.jewishvirtuallibrary.org/sephardim"},{"title":"Jewish Virtual Library: Zohar","url":"https://www.jewishvirtuallibrary.org/zohar"},{"title":"Encyclopaedia Britannica: Isaac ben Solomon Luria","url":"https://www.britannica.com/print/article/351761"},{"title":"My Jewish Learning: The Baal Shem Tov","url":"https://www.myjewishlearning.com/article/the-baal-shem-tov/"},{"title":"Jewish Virtual Library: Moses Mendelssohn","url":"https://www.jewishvirtuallibrary.org/moses-mendelssohn"}]},{"n":8,"letter":"ח","title":"Современность","he":"ימינו","desc":"Течения, Холокост, Израиль и еврейская жизнь сегодня","lessons":[{"id":"w8l1","title":"Течения сегодня","steps":[{"he":"זרמים","h":"Откуда взялись течения","p":"В XIX веке в Германии часть раввинов стала менять богослужение, чтобы приблизить его к современной жизни. Одним из основателей реформистского иудаизма был раввин Авраам Гейгер: в службе появились молитвы на местном языке и проповедь по-немецки. В 1845 году раввин Захария Франкель покинул съезд реформистов, когда там решили, что иврит в молитве необязателен. В 1854 году он возглавил раввинскую семинарию в Бреслау."},{"h":"Ортодоксы и масорти","p":"Ортодоксальный иудаизм считает галаху обязательной в полном объёме; мужчины и женщины в синагоге сидят раздельно. Современные ортодоксы соединяют соблюдение заповедей со светским образованием. Харедим, ультраортодоксы, соблюдают строже всех и держатся обособленно от светского общества. Консервативное течение, вне Северной Америки называемое масорти, выросло из идей Франкеля: оно тоже считает галаху обязательной, но допускает её развитие."},{"h":"Реформисты, реконструкционисты, светские","p":"Реформистский, или либеральный, иудаизм ставит на первое место этику и оставляет обряды на выбор человека. Первую женщину-раввина в США рукоположили реформисты в 1972 году, консерваторы в 1985. Происхождение по отцу реформисты признали в 1983 году, реконструкционисты ещё раньше. Реконструкционизм основал в США раввин Мордехай Каплан: он видел в иудаизме развивающуюся цивилизацию. Многие евреи светские: в Израиле, по опросам Pew (2014–2015) и Центрального статистического бюро (2022), светскими, «хилоним», себя называют 45–49% евреев."}],"check":{"q":"Из-за чего Захария Франкель в 1845 году покинул съезд реформистов?","opts":["Съезд решил, что иврит в молитве необязателен","Съезд отменил празднование Шаббата","Съезд запретил изучать Талмуд","Съезд перенёс богослужение на воскресенье"],"a":0,"why":"Франкель настаивал на иврите как языке молитвы. Из его идей позже выросло консервативное течение (масорти)."}},{"id":"w8l2","title":"Катастрофа (Шоа)","steps":[{"he":"שואה","h":"Что такое Холокост","p":"Холокост (на иврите Шоа) — это систематическое, организованное государством преследование и убийство евреев Европы нацистской Германией, её союзниками и пособниками в 1933–1945 годах. Погибли около шести миллионов евреев. По данным Яд ва-Шем, точного числа нет, и серьёзные исследования дают от пяти до шести миллионов. Это были мужчины, женщины и дети, целые общины с их языком, учёностью и укладом жизни."},{"h":"Шаг за шагом","p":"15 сентября 1935 года нацисты приняли Нюрнбергские законы: евреи лишились полного гражданства. В ночь на 10 ноября 1938 года прошла Хрустальная ночь: погром по всей Германии (включая присоединённую Австрию), были сожжены или разрушены более тысячи синагог. 20 января 1942 года на Ванзейской конференции чиновники согласовали осуществление «окончательного решения», плана уничтожения евреев Европы. Людей убивали в гетто, в ходе массовых расстрелов и в лагерях, в том числе в лагерях уничтожения: Освенцим (Аушвиц-Биркенау), Треблинка, Собибор, Белжец, Хелмно."},{"he":"זיכרון","h":"Сопротивление и память","p":"19 апреля 1943 года, в канун Песаха, началось восстание в Варшавском гетто: евреи сопротивлялись почти месяц. Мемориал Яд ва-Шем присваивает звание Праведника народов мира неевреям, которые с риском для жизни спасали евреев; их уже многие тысячи. В Израиле день памяти, Йом ха-Шоа, отмечают 27 нисана (если дата примыкает к Шаббату, её сдвигают на день); в этот день звучит сирена. По решению ООН 2005 года Международный день памяти жертв Холокоста отмечают 27 января, в годовщину освобождения Освенцима."}],"check":{"q":"Почему Международный день памяти жертв Холокоста отмечают 27 января?","opts":["В этот день была Хрустальная ночь","В этот день приняли Нюрнбергские законы","В этот день в 1945 году был освобождён Освенцим","В этот день началось восстание в Варшавском гетто"],"a":2,"why":"27 января 1945 года советские войска освободили узников Освенцима. В Израиле есть и свой день памяти, Йом ха-Шоа, 27 нисана (рядом с Шаббатом дату сдвигают)."}},{"id":"w8l3","title":"Израиль и сионизм","steps":[{"he":"ציונות","h":"Сионизм и Герцль","p":"Сионизм — движение конца XIX века. Его целью был дом для еврейского народа на земле Израиля (Эрец-Исраэль). В 1896 году Теодор Герцль издал книгу «Еврейское государство». В августе 1897 года он созвал в швейцарском Базеле Первый сионистский конгресс; конгресс принял Базельскую программу, а Герцля избрали президентом Сионистской организации."},{"h":"От декларации до государства","p":"2 ноября 1917 года министр иностранных дел Британии Артур Бальфур написал лорду Ротшильду, что правительство поддерживает создание в Палестине «национального очага для еврейского народа», не ущемляя гражданских и религиозных прав нееврейских общин. 29 ноября 1947 года Генеральная Ассамблея ООН приняла план раздела: арабское и еврейское государства и международный статус Иерусалима. 14 мая 1948 года Давид Бен-Гурион провозгласил в Тель-Авиве создание Государства Израиль."},{"he":"חוק השבות","h":"Закон, язык и общины","p":"5 июля 1950 года Кнессет принял Закон о возвращении: «Каждый еврей имеет право приехать в эту страну как оле» (репатриант). В 1970 году право распространили на детей и внуков евреев и на супругов. Иврит снова стал разговорным языком; большую роль в этом сыграл Элиэзер Бен-Йегуда (1858–1922): его семья первой дома говорила только на иврите. Сегодня в мире почти 16 миллионов евреев (оценка Делла Пергола на начало 2024 года; методики разные): в Израиле больше 7 миллионов, в США около 6,3 миллиона."}],"check":{"q":"Где в 1897 году прошёл Первый сионистский конгресс?","opts":["В Вене","В Базеле","В Лондоне","В Иерусалиме"],"a":1,"why":"Герцль созвал конгресс в швейцарском Базеле, там была принята Базельская программа."}},{"id":"w8l4","title":"Жизненный цикл и общины","steps":[{"he":"בר מצווה","h":"Имя и совершеннолетие","p":"Мальчику делают брит-милу на восьмой день и тогда же дают еврейское имя; при проблемах со здоровьем обряд откладывают. Имя девочке традиционно объявляют в синагоге при чтении Торы, бывает и отдельный праздник в честь рождения дочери. Религиозное совершеннолетие: у мальчиков в 13 лет (бар-мицва), у девочек по традиции в 12 (бат-мицва), в части общин в 13. Первую известную бат-мицву в США Мордехай Каплан провёл для дочери Джудит в 1922 году. Порядок обряда в течениях различается."},{"he":"חופה","h":"Свадьба и траур","p":"Свадьбу проводят под хупой, балдахином, который символизирует будущий дом пары. Читают ктубу, брачный договор, и произносят семь благословений. В конце разбивают бокал: по одному объяснению, в память о разрушении Храма даже в минуту радости. После похорон близкие семь дней сидят шиву: остаются дома, их навещают. Дети читают по родителям кадиш, арамейскую молитву-прославление Б-га, одиннадцать месяцев; по традиции нужен миньян."},{"h":"Разные общины","p":"Ашкеназы ведут род от евреев Германии, позже расселившихся в Восточной Европе, сефарды от евреев Испании и Португалии, мизрахим («восточные») от общин Ближнего Востока и Северной Африки. Из СССР в 1970-е уехали около 250 тысяч евреев, многим отказывали («отказники»); с 1989 года в Израиль переехали около миллиона, многие также в США и Германию. Эфиопских евреев называют Бета Исраэль, «Дом Израиля»; в мае 1991 года в ходе операции «Соломон» в Израиль перевезли 14–15 тысяч из них."}],"check":{"q":"Сколько дней длится шива?","opts":["Три дня","Тридцать дней","Одиннадцать месяцев","Семь дней"],"a":3,"why":"Шива значит «семь»: семь дней траура после похорон. Одиннадцать месяцев дети умершего читают кадиш."}}],"quiz":[{"q":"Кого считают одним из основателей реформистского иудаизма в Германии XIX века?","opts":["Мордехая Каплана","Теодора Герцля","Авраама Гейгера","Элиэзера Бен-Йегуду"],"a":2,"why":"Раввин Авраам Гейгер был среди основателей реформистского течения. Каплан основал реконструкционизм в США."},{"q":"Какое течение признало происхождение по отцу ещё раньше реформистов?","opts":["Ортодоксальное","Реконструкционистское","Консервативное","Ни одно из течений"],"a":1,"why":"Реконструкционисты признали происхождение по отцу раньше реформистов, принявших это решение в 1983 году. Ортодоксы и консерваторы его не признают."},{"q":"Какое событие произошло 20 января 1942 года?","opts":["Ванзейская конференция","Хрустальная ночь","Принятие Нюрнбергских законов","Начало восстания в Варшавском гетто"],"a":0,"why":"На Ванзейской конференции чиновники согласовали осуществление «окончательного решения». Нюрнбергские законы приняли в 1935 году, Хрустальная ночь прошла в ноябре 1938-го, восстание в Варшавском гетто началось в апреле 1943-го."},{"q":"Кому Яд ва-Шем присваивает звание Праведника народов мира?","opts":["Узникам гетто, поднявшим восстание","Солдатам, освободившим лагеря","Историкам, изучающим Холокост","Неевреям, которые с риском для жизни спасали евреев"],"a":3,"why":"Это звание для неевреев, рисковавших жизнью ради спасения евреев. Таких людей уже многие тысячи."},{"q":"Что произошло 14 мая 1948 года?","opts":["Принят Закон о возвращении","Опубликована декларация Бальфура","Провозглашено Государство Израиль","ООН приняла план раздела"],"a":2,"why":"В этот день Давид Бен-Гурион провозгласил в Тель-Авиве создание Израиля. План раздела ООН приняли 29 ноября 1947 года."},{"q":"Чьё имя прежде всего связывают с возрождением иврита как разговорного языка?","opts":["Элиэзер Бен-Йегуда","Артур Бальфур","Захария Франкель","Давид Бен-Гурион"],"a":0,"why":"Элиэзер Бен-Йегуда (1858–1922) сыграл большую роль в возрождении иврита: его семья первой дома говорила только на иврите."},{"q":"Что традиционно делают в конце свадебной церемонии?","opts":["Зажигают семь свечей","Разбивают бокал","Читают кадиш","Трубят в шофар"],"a":1,"why":"Разбитый бокал, по одному из объяснений, напоминает о разрушении Храма даже в минуту радости."},{"q":"Как называют общины евреев Ближнего Востока и Северной Африки?","opts":["Ашкеназы","Бета Исраэль","Хилоним","Мизрахим"],"a":3,"why":"Мизрахим значит «восточные». Понятия «мизрахим» и «сефарды» частично пересекаются: многие мизрахим следуют сефардским обычаям."}],"cards":[{"id":"w8c1","he":"חרדים","term":"Харедим","def":"Ультраортодоксальные евреи. Соблюдают галаху строже всех и держатся обособленно от светского общества."},{"id":"w8c2","he":"מסורתי","term":"Масорти","def":"Название консервативного иудаизма вне Северной Америки. Считает галаху обязательной, но допускающей развитие."},{"id":"w8c3","he":"חילונים","term":"Хилоним","def":"Светские евреи в Израиле. По опросам 2014–2022 годов, так себя называют 45–49% израильских евреев."},{"id":"w8c4","he":"שואה","term":"Шоа","def":"Ивритское название Холокоста: убийства около шести миллионов евреев Европы нацистами и их пособниками в 1933–1945 годах."},{"id":"w8c5","he":"חסידי אומות העולם","term":"Хасидей умот ха-олам","def":"Праведники народов мира. Звание, которое Яд ва-Шем присваивает неевреям, спасавшим евреев с риском для жизни."},{"id":"w8c6","he":"יום השואה","term":"Йом ха-Шоа","def":"День памяти Катастрофы в Израиле, 27 нисана; если дата примыкает к Шаббату, её сдвигают на день. Закреплён решением Кнессета."},{"id":"w8c7","he":"ציונות","term":"Ционут","def":"Сионизм. Движение конца XIX века за национальный дом еврейского народа на земле Израиля. Первый конгресс прошёл в Базеле в 1897 году."},{"id":"w8c8","he":"חוק השבות","term":"Хок ха-швут","def":"Закон о возвращении (1950). Даёт каждому еврею право приехать в Израиль; с 1970 года также детям и внукам евреев."},{"id":"w8c9","he":"בר מצווה","term":"Бар-мицва","def":"«Сын заповеди». Религиозное совершеннолетие мальчика в 13 лет. У девочек бат-мицва, по традиции в 12 лет, в части общин в 13."},{"id":"w8c10","he":"חופה","term":"Хупа","def":"Свадебный балдахин, под которым проходит еврейская свадьба. Символ будущего дома пары."},{"id":"w8c11","he":"שבעה","term":"Шива","def":"«Семь». Семь дней траура после похорон близкого, когда скорбящие остаются дома и их навещают."},{"id":"w8c12","he":"קדיש","term":"Кадиш","def":"Арамейская молитва-прославление Б-га. Дети читают её по родителям одиннадцать месяцев; по традиции нужен миньян."}],"sources":[{"title":"USHMM Holocaust Encyclopedia: Introduction to the Holocaust","url":"https://encyclopedia.ushmm.org/content/en/article/introduction-to-the-holocaust"},{"title":"Yad Vashem: Holocaust FAQs","url":"https://www.yadvashem.org/holocaust/faqs.html"},{"title":"Encyclopaedia Judaica via Jewish Virtual Library: Conservative Judaism","url":"https://jewishvirtuallibrary.org/jsource/judaica/ejud_0002_0005_0_04582.html"},{"title":"My Jewish Learning: Jewish Denominations","url":"https://www.myjewishlearning.com/article/jewish-denominations/"},{"title":"Jewish Virtual Library: Abraham Geiger","url":"https://www.jewishvirtuallibrary.org/abraham-geiger"},{"title":"Jewish Virtual Library: First Zionist Congress and Basel Program","url":"https://www.jewishvirtuallibrary.org/first-zionist-congress-and-basel-program-1897"},{"title":"Encyclopaedia Britannica: Balfour Declaration","url":"https://www.britannica.com/event/Balfour-Declaration"},{"title":"U.S. Office of the Historian: Creation of Israel, 1948","url":"https://history.state.gov/milestones/1945-1952/creation-israel"},{"title":"Sergio DellaPergola: World Jewish Population, 2024","url":"https://www.cbs.gov.il/he/Documents/World%20DellaPergola%202024%20complete.pdf"},{"title":"Jewish Virtual Library: The First Bat Mitzvah in the United States","url":"https://www.jewishvirtuallibrary.org/jsource/Judaism/firstbat.html"}]}];
+  const LEVELS = WEEKS;
+  const LESSONS = [];
+  const CARDS = [];
+  (function () {
+    const seen = {};
+    WEEKS.forEach((w) => {
+      w.cards = w.cards.filter((c) => { if (seen[c.he]) return false; seen[c.he] = 1; return true; });
+      w.lessons.forEach((l) => { l.week = w.n; LESSONS.push(l); });
+      w.cards.forEach((c) => { c.week = w.n; CARDS.push(c); });
+    });
+  })();
+
+  const BADGES = [
+    { id: "first", he: "א", name: "Первый шаг", how: "Пройдите первый урок", test: (s) => Object.keys(s.lessons).length >= 1 },
+    { id: "three", he: "ג", name: "Три дня подряд", how: "Занимайтесь три дня подряд", test: (s) => s.best >= 3 },
+    { id: "vocab", he: "מ", name: "Словарь", how: "Отметьте «Знаю» на шести карточках", test: (s) => s.knows >= 6 },
+    { id: "week1", he: "י", name: "Неделя пройдена", how: "Пройдите любую неделю целиком", test: () => WEEKS.some((w) => weekDone(w.n)) },
+    { id: "perfect", he: "ת", name: "Безупречно", how: "Ответьте верно на все 8 вопросов любого квиза", test: (s) => Object.keys(s.quizzes).some((k) => s.quizzes[k].best === 8) },
+    { id: "half", he: "ד", name: "Полпути", how: "Пройдите четыре недели", test: () => WEEKS.filter((w) => weekDone(w.n)).length >= 4 },
+    { id: "words", he: "ס", name: "Большой словарь", how: "Отметьте «Знаю» на 40 карточках", test: (s) => s.knows >= 40 },
+    { id: "all", he: "ח", name: "Весь путь", how: "Пройдите все восемь недель", test: () => WEEKS.every((w) => weekDone(w.n)) }
+  ];
+
+  const INTERVALS = [0, 1, 3, 7, 14];
+  const KEY = "derekh.v2";
+  const OLD_KEY = "derekh.v1";
+
+  /* ---------- icons ---------- */
+  const I = {
+    flame: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5c3.5 3.6 6 6.4 6 10.2a6 6 0 0 1-12 0c0-2.4 1.2-4.2 2.6-5.8.2 1.6 1 2.6 2 3C10 7.5 10.6 5 12 2.5z"/></svg>',
+    spark: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>',
+    check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+    chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>',
+    lock: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+    cards: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 3.5h12a2 2 0 0 1 2 2V17"/></svg>',
+    star: function (on) {
+      return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" fill="' + (on ? "currentColor" : "none") + '" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+    }
+  };
+
+  /* ---------- state ---------- */
+  function fresh() {
+    return { xp: 0, streak: 0, best: 0, last: null, lessons: {}, quizzes: {}, cards: {}, knows: 0, badges: {} };
+  }
+  function migrate(o) {
+    const r = Object.assign(fresh(), o);
+    r.lessons = {}; r.cards = {}; r.quizzes = {};
+    Object.keys(o.lessons || {}).forEach((k) => { r.lessons["w1" + k] = o.lessons[k]; });
+    Object.keys(o.cards || {}).forEach((k) => { r.cards["w1" + k] = o.cards[k]; });
+    if (o.quiz) r.quizzes.w1 = o.quiz;
+    delete r.quiz;
+    return r;
+  }
+  function load() {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) return Object.assign(fresh(), JSON.parse(raw));
+      const old = localStorage.getItem(OLD_KEY);
+      if (old) return migrate(JSON.parse(old));
+    } catch (e) {}
+    return fresh();
+  }
+  let S = load();
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {}
+  }
+
+  const ui = { tab: "path", view: "path", week: 1, scope: null, lessonId: null, step: 0, picked: null, quiz: null, cards: null, cardsMsg: null, resetArm: false, nonce: 0, perm: null, permKey: "" };
+
+  /* ---------- helpers ---------- */
+  const pad = (n) => String(n).padStart(2, "0");
+  const dkey = (d) => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  const today = () => dkey(new Date());
+  function addDays(k, n) {
+    const p = k.split("-").map(Number);
+    return dkey(new Date(p[0], p[1] - 1, p[2] + n));
+  }
+  function fmtDay(k) { const p = k.split("-"); return p[2] + "." + p[1]; }
+  function touch() {
+    const t = today();
+    if (S.last === t) return;
+    S.streak = S.last === addDays(t, -1) ? S.streak + 1 : 1;
+    S.last = t;
+    S.best = Math.max(S.best, S.streak);
+  }
+  function streakNow() {
+    const t = today();
+    return S.last === t || S.last === addDays(t, -1) ? S.streak : 0;
+  }
+  function shuffle(a) {
+    const r = a.slice();
+    for (let i = r.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const x = r[i]; r[i] = r[j]; r[j] = x;
+    }
+    return r;
+  }
+  const W = (n) => WEEKS[n - 1];
+  const wLessons = (n) => W(n).lessons;
+  const wCards = (n) => W(n).cards;
+  const qOf = (n) => S.quizzes["w" + n] || null;
+  const allLessons = (n) => wLessons(n).every((l) => S.lessons[l.id]);
+  const quizPassed = (n) => !!qOf(n) && qOf(n).best >= 5;
+  const weekDone = (n) => allLessons(n) && quizPassed(n);
+  const stepsDone = (n) => wLessons(n).filter((l) => S.lessons[l.id]).length + (quizPassed(n) ? 1 : 0);
+  const lessonById = (id) => LESSONS.find((l) => l.id === id);
+  const curWeek = () => { const w = WEEKS.find((x) => !weekDone(x.n)); return w ? w.n : 0; };
+  const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const dueNow = (c) => { const st = S.cards[c.id]; return !st || st.due <= today(); };
+  const mastered = (list) => list.filter((c) => S.cards[c.id] && S.cards[c.id].box >= 3).length;
+  const starCount = (n) => (n >= 7 ? 3 : n >= 5 ? 2 : 1);
+  const xpForQuiz = (n) => n * 10 + (n === 8 ? 30 : 0);
+  const reduce = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function newBadges() {
+    const out = [];
+    BADGES.forEach((b) => {
+      if (!S.badges[b.id] && b.test(S)) {
+        S.badges[b.id] = today();
+        out.push("«" + b.name + "»");
+      }
+    });
+    return out;
+  }
+  function gain(xp, msg) {
+    touch();
+    S.xp += xp;
+    const nb = newBadges();
+    save();
+    const parts = [];
+    if (msg) parts.push(msg);
+    if (nb.length) parts.push("Значок " + nb.join(", "));
+    if (parts.length) toast(parts.join(" · "));
+  }
+
+  let toastTimer = null;
+  function toast(t) {
+    const el = document.getElementById("toast");
+    el.textContent = t;
+    el.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove("show"), 3000);
+  }
+
+  function optionOrder(n, key) {
+    if (ui.permKey !== key || !ui.perm || ui.perm.length !== n) {
+      ui.perm = shuffle(Array.from({ length: n }, (_, i) => i));
+      ui.permKey = key;
+    }
+    return ui.perm;
+  }
+
+  /* ---------- views ---------- */
+  function hdr() {
+    const s = streakNow();
+    return '<header class="top"><div class="brand"><h1 class="brand-name">Дерех</h1><span class="he" lang="he" dir="rtl">דרך</span></div>' +
+      '<div class="chips"><span class="chip">' + I.flame + '<span class="sr">Дней подряд: </span><b>' + s + '</b></span>' +
+      '<span class="chip">' + I.spark + '<span class="sr">Очки: </span><b>' + S.xp + '</b></span></div></header>';
+  }
+
+  function stop(l, i) {
+    const n = i + 1;
+    const done = weekDone(n);
+    const cur = n === curWeek();
+    const state = done ? "done" : cur ? "current" : "open";
+    const node = done ? I.check : l.letter;
+    const dn = stepsDone(n);
+    let body;
+    if (cur || done) {
+      const pct = Math.round((dn / 5) * 100);
+      const cta = dn === 0 ? "Начать неделю" : done ? "Открыть неделю" : "Продолжить";
+      body = '<div class="panel">' +
+        '<div class="panel-top"><p class="eyebrow">Неделя ' + n + (done ? " · пройдена" : "") + '</p><span class="he he-term" lang="he" dir="rtl">' + l.he + '</span></div>' +
+        '<h2 class="stop-title">' + l.title + '</h2>' +
+        '<p class="muted">' + l.desc + '</p>' +
+        '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="' + dn + '" aria-label="Шагов пройдено"><i style="width:' + pct + '%"></i></div>' +
+        '<p class="meta">Пройдено ' + dn + ' из 5 шагов · 4 урока, квиз, ' + wCards(n).length + ' карточек</p>' +
+        '<button class="btn" data-action="open-level" data-n="' + n + '">' + cta + '</button></div>';
+    } else {
+      body = '<button class="soft" data-action="open-level" data-n="' + n + '">' +
+        '<span class="soft-top"><span class="eyebrow">Неделя ' + n + (dn ? " · " + dn + " из 5" : "") + '</span><span class="he stop-he" lang="he" dir="rtl">' + l.he + '</span></span>' +
+        '<span class="stop-title">' + l.title + '</span>' +
+        '<span class="muted soft-desc">' + l.desc + '</span></button>';
+    }
+    return '<li class="stop ' + state + '"><div class="rail"><span class="node">' + node + '</span></div><div class="stop-body">' + body + '</div></li>';
+  }
+
+  function viewPath() {
+    const cw = curWeek();
+    const nd = WEEKS.filter((w) => weekDone(w.n)).length;
+    const segs = WEEKS.map((w) => '<i class="' + (weekDone(w.n) ? "on" : w.n === cw ? "cur" : "") + '"></i>').join("");
+    return hdr() +
+      '<p class="eyebrow">Путь · восемь недель</p>' +
+      '<div class="weeks" role="img" aria-label="Пройдено недель: ' + nd + ' из 8">' + segs + '</div>' +
+      (cw === 0 ? '<p class="prose">Все восемь недель пройдены. Любую из них можно открыть снова, а карточки продолжают возвращаться по расписанию.</p>' : "") +
+      '<ol class="route">' + LEVELS.map(stop).join("") + '</ol>';
+  }
+
+  function row(st, dot, title, sub, action, id) {
+    return '<li><button class="row ' + st + '" data-action="' + action + '" data-id="' + id + '">' +
+      '<span class="dot">' + dot + '</span>' +
+      '<span><span class="row-title">' + title + '</span><span class="row-sub">' + sub + '</span></span>' +
+      '<span class="chev">' + (st === "locked" ? "" : I.chev) + '</span></button></li>';
+  }
+
+  function viewLevel() {
+    const n = ui.week;
+    const L = W(n);
+    const lessonRows = L.lessons.map((l, i) => {
+      const d = S.lessons[l.id];
+      return row(d ? "done" : "open", d ? I.check : i + 1, esc(l.title), l.steps.length + " шага и вопрос · " + (d ? "пройден" : "+30 очков"), "open-lesson", l.id);
+    }).join("");
+    const unlocked = allLessons(n);
+    const qd = quizPassed(n);
+    const q = qOf(n);
+    const qSub = !unlocked ? "Откроется после четырёх уроков" : q ? "Лучший результат: " + q.best + " из 8" : "8 вопросов · до 110 очков";
+    const qrow = row(qd ? "done" : unlocked ? "open" : "locked", qd ? I.check : unlocked ? 5 : I.lock, "Квиз недели", qSub, "open-quiz", "");
+    const src = L.sources.map((x) => '<li><a href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer">' + esc(x.title) + '</a></li>').join("");
+    return '<button class="back" data-action="back-path">' + I.chev + 'Путь</button>' +
+      '<div class="lvl-head"><p class="eyebrow">Неделя ' + n + ' из 8</p><h1 class="lvl-title">' + L.title + '</h1><span class="he lvl-he" lang="he" dir="rtl">' + L.he + '</span><p class="muted">' + L.desc + '.</p></div>' +
+      '<ol class="rows">' + lessonRows + qrow + '</ol>' +
+      '<p class="eyebrow section-label">Повторение</p>' +
+      '<ol class="rows"><li><button class="row open" data-action="go-cards" data-n="' + n + '"><span class="dot">' + I.cards + '</span><span><span class="row-title">Карточки недели</span><span class="row-sub">Освоено ' + mastered(wCards(n)) + ' из ' + wCards(n).length + '</span></span><span class="chev">' + I.chev + '</span></button></li></ol>' +
+      '<p class="eyebrow section-label">Источники недели</p>' +
+      '<p class="meta">Материал сверен с этими изданиями и страницами. Если хотите проверить или почитать глубже, начните отсюда.</p>' +
+      '<ul class="srcs">' + src + '</ul>';
+  }
+
+  function topBar(total, cur) {
+    let segs = "";
+    for (let i = 0; i < total; i++) segs += '<i class="' + (i < cur ? "on" : i === cur ? "cur" : "") + '"></i>';
+    return '<div class="lbar"><button class="icon-btn" data-action="close" aria-label="Закрыть">' + I.close + '</button><div class="segs" aria-hidden="true">' + segs + '</div></div>';
+  }
+
+  function optionsHtml(opts, a, picked, key) {
+    const order = optionOrder(opts.length, key);
+    return '<div class="opts">' + order.map((i) => {
+      let cls = "";
+      let mark = "";
+      if (picked != null) {
+        if (i === a) { cls = " good"; mark = I.check; }
+        else if (i === picked) { cls = " bad"; mark = I.close; }
+      }
+      return '<button class="opt' + cls + '" data-action="pick" data-i="' + i + '"' + (picked != null ? " disabled" : "") + '><span>' + opts[i] + '</span>' + mark + '</button>';
+    }).join("") + '</div>';
+  }
+
+  function fbHtml(ok, why) {
+    return '<div class="fb ' + (ok ? "good" : "bad") + '"><b>' + (ok ? "Верно." : "Не совсем.") + '</b> ' + why + '</div>';
+  }
+
+  function viewLesson() {
+    const L = lessonById(ui.lessonId);
+    const idx = W(L.week).lessons.indexOf(L);
+    const total = L.steps.length + 1;
+    const s = ui.step;
+    let body;
+    if (s < L.steps.length) {
+      const st = L.steps[s];
+      body = '<div class="stack"><p class="eyebrow">Урок ' + (idx + 1) + ' · ' + L.title + '</p>' +
+        (st.he ? '<p class="he-hero" lang="he" dir="rtl">' + st.he + '</p>' : "") +
+        '<h2>' + st.h + '</h2>' +
+        (st.verse ? '<div class="verse"><span class="he" lang="he" dir="rtl">' + st.verse.he + '</span><p>' + st.verse.ru + '</p></div>' : "") +
+        '<p class="prose">' + st.p + '</p>' +
+        '<button class="btn" data-action="next">Далее</button></div>';
+    } else {
+      const c = L.check;
+      const ok = ui.picked === c.a;
+      body = '<div class="stack"><p class="eyebrow">Проверка</p><h2>' + c.q + '</h2>' +
+        optionsHtml(c.opts, c.a, ui.picked, "l" + ui.nonce + L.id) +
+        (ui.picked != null ? fbHtml(ok, c.why) + '<button class="btn" data-action="finish-lesson">' + (S.lessons[L.id] ? "Завершить" : "Завершить урок") + '</button>' : "") +
+        '</div>';
+    }
+    return topBar(total, s) + body;
+  }
+
+  function viewQuiz() {
+    const q = ui.quiz;
+    const QUIZ = W(ui.week).quiz;
+    if (q.done) {
+      const c = q.correct;
+      const n = starCount(c);
+      let stars = "";
+      for (let i = 0; i < 3; i++) stars += I.star(i < n);
+      const msg = c >= 7 ? "Основы усвоены. Можно двигаться дальше." : c >= 5 ? "Неделя пройдена. Неточности лучше повторить по карточкам." : "До порога не хватило: нужно не меньше 5 из 8. Повторите уроки и карточки и попробуйте ещё раз.";
+      const pts = q.diff > 0 ? "+" + q.diff + " очков" : "Повтор без новых очков";
+      return '<div class="lbar"><button class="icon-btn" data-action="close" aria-label="Закрыть">' + I.close + '</button></div>' +
+        '<div class="stack"><p class="eyebrow">Квиз недели ' + ui.week + '</p>' +
+        '<div class="stars" role="img" aria-label="Звёзд: ' + n + ' из 3">' + stars + '</div>' +
+        '<p class="result-num">' + c + ' из ' + QUIZ.length + '</p>' +
+        '<p class="prose">' + msg + '</p><p class="meta">' + pts + '</p>' +
+        '<div class="btn-row"><button class="btn" data-action="close">К неделе</button><button class="btn ghost" data-action="retry-quiz">Пройти ещё раз</button></div></div>';
+    }
+    const Q = QUIZ[q.i];
+    const ok = q.picked === Q.a;
+    return topBar(QUIZ.length, q.i) +
+      '<div class="stack"><p class="eyebrow">Вопрос ' + (q.i + 1) + ' из ' + QUIZ.length + '</p><h2>' + Q.q + '</h2>' +
+      optionsHtml(Q.opts, Q.a, q.picked, "q" + ui.nonce + "-" + q.i) +
+      (q.picked != null ? fbHtml(ok, Q.why) + '<button class="btn" data-action="quiz-next">' + (q.i < QUIZ.length - 1 ? "Дальше" : "Результат") + '</button>' : "") +
+      '</div>';
+  }
+
+  const scopeCards = () => (ui.scope ? wCards(ui.scope) : CARDS);
+
+  function nextDue() {
+    const t = today();
+    const ds = scopeCards().map((c) => S.cards[c.id]).filter(Boolean).map((s) => s.due).filter((d) => d > t).sort();
+    return ds[0] || null;
+  }
+
+  function viewCards() {
+    const c = ui.cards;
+    if (c) {
+      const card = CARDS.find((x) => x.id === c.queue[0]);
+      const done = c.total - c.queue.length;
+      const face = c.flipped
+        ? '<span class="term">' + card.term + '</span><span class="he sm" lang="he" dir="rtl">' + card.he + '</span><p class="def">' + card.def + '</p>'
+        : '<span class="he" lang="he" dir="rtl">' + card.he + '</span><span class="term">' + card.term + '</span><span class="hint">Нажмите, чтобы увидеть значение</span>';
+      return hdr() +
+        '<div class="fc-meta"><span>Осталось ' + c.queue.length + ' из ' + c.total + (c.practice ? " · тренировка" : "") + '</span><button class="linkbtn" data-action="end-cards">Закончить</button></div>' +
+        '<div class="bar" aria-hidden="true"><i style="width:' + Math.round((done / c.total) * 100) + '%"></i></div>' +
+        '<div style="height:14px"></div>' +
+        '<button class="fc' + (c.flipped ? " flipped" : "") + '" data-action="flip" aria-label="Перевернуть карточку">' + face + '</button>' +
+        (c.flipped ? '<div class="fc-actions"><button class="btn ghost" data-action="again">Ещё раз</button><button class="btn" data-action="know">Знаю</button></div>' : "");
+    }
+    const pool = scopeCards();
+    const due = pool.filter(dueNow).length;
+    const nd = nextDue();
+    const msg = ui.cardsMsg === "done" ? "Сессия закончена." : due === 0 ? "На сегодня всё повторено." : "";
+    const itemOf = (x) => {
+      const box = S.cards[x.id] ? S.cards[x.id].box : 0;
+      let pips = "";
+      for (let i = 0; i < 4; i++) pips += '<i class="' + (i < box ? "on" : "") + '"></i>';
+      return '<li><span class="t">' + x.term + '</span><span class="he" lang="he" dir="rtl">' + x.he + '</span><span class="pips" role="img" aria-label="Освоение: ' + Math.min(box, 4) + ' из 4">' + pips + '</span></li>';
+    };
+    let list = "";
+    (ui.scope ? [W(ui.scope)] : WEEKS).forEach((w) => {
+      list += '<p class="eyebrow section-label">Неделя ' + w.n + ' · ' + w.title + '</p><ol class="terms">' + w.cards.map(itemOf).join("") + '</ol>';
+    });
+    return hdr() +
+      (ui.scope ? '<button class="back" data-action="back-level" data-n="' + ui.scope + '">' + I.chev + 'К неделе</button>' : "") +
+      '<div class="lead"><p class="eyebrow">' + (ui.scope ? "Карточки недели " + ui.scope : "Все карточки") + '</p><h2>' + (msg || "Повторение терминов") + '</h2></div>' +
+      '<p class="stat-line"><span>К повторению: <b>' + due + '</b></span><span>Освоено: <b>' + mastered(pool) + ' из ' + pool.length + '</b></span>' + (due === 0 && nd ? '<span>Следующее: <b>' + fmtDay(nd) + '</b></span>' : "") + '</p>' +
+      '<div class="btn-row">' +
+      (due > 0 ? '<button class="btn" data-action="start-cards">Повторить · ' + due + '</button>' : '<button class="btn" data-action="start-cards" data-practice="1">Потренироваться ещё</button>') +
+      (due > 0 ? '<button class="btn ghost" data-action="start-cards" data-practice="1">Тренировка без записи</button>' : "") +
+      '</div>' + list;
+  }
+
+  function viewBadges() {
+    const items = BADGES.map((b) => {
+      const got = S.badges[b.id];
+      return '<div class="badge' + (got ? " on" : "") + '"><span class="medal" lang="he" dir="rtl">' + b.he + '</span><span class="badge-name">' + b.name + '</span><span class="badge-how">' + (got ? "Получен " + fmtDay(got) : b.how) + '</span></div>';
+    }).join("");
+    const earned = Object.keys(S.badges).length;
+    return hdr() +
+      '<div class="lead"><p class="eyebrow">Значки</p><h2>Получено ' + earned + ' из ' + BADGES.length + '</h2></div>' +
+      '<div class="bgrid">' + items + '</div>' +
+      '<div class="reset"><p class="meta">Прогресс хранится на этом устройстве.</p>' +
+      (window.DEREKH_PWA ? '<p class="meta">Чтобы не потерять его или перенести на другое устройство, сохраните его в файл.</p><div class="btn-inline"><button class="btn-sm" data-action="export">Сохранить прогресс в файл</button><button class="btn-sm" data-action="import">Загрузить из файла</button></div>' : "") +
+      (ui.resetArm
+        ? '<p>Стереть очки, уроки, карточки и значки?</p><div class="btn-inline"><button class="btn-sm danger" data-action="reset-do">Да, стереть</button><button class="btn-sm" data-action="reset-cancel">Отмена</button></div>'
+        : '<button class="btn-sm" data-action="reset-arm">Начать заново</button>') +
+      '</div>';
+  }
+
+  /* ---------- render ---------- */
+  const app = document.getElementById("app");
+  const tabs = document.getElementById("tabs");
+
+  function render() {
+    let h = "";
+    let focus = false;
+    switch (ui.view) {
+      case "level": h = viewLevel(); break;
+      case "lesson": h = viewLesson(); focus = true; break;
+      case "quiz": h = viewQuiz(); focus = true; break;
+      case "cards": h = viewCards(); break;
+      case "badges": h = viewBadges(); break;
+      default: h = viewPath();
+    }
+    app.className = "app" + (focus ? " focus" : "");
+    app.innerHTML = h;
+    tabs.hidden = focus;
+    tabs.querySelectorAll("button").forEach((b) => {
+      if (b.dataset.tab === ui.tab) b.setAttribute("aria-current", "page");
+      else b.removeAttribute("aria-current");
+    });
+  }
+  function scrollTop() { try { window.scrollTo(0, 0); } catch (e) {} }
+  function go(view) { ui.view = view; render(); scrollTop(); }
+  function reveal() {
+    const f = document.querySelector(".fb");
+    if (f && f.scrollIntoView) f.scrollIntoView({ block: "nearest", behavior: reduce() ? "auto" : "smooth" });
+  }
+
+  function newQuiz() {
+    ui.nonce++;
+    ui.quiz = { i: 0, picked: null, correct: 0, done: false, diff: 0 };
+  }
+
+  function finishQuiz() {
+    const q = ui.quiz;
+    const c = q.correct;
+    const prev = qOf(ui.week) ? qOf(ui.week).best : null;
+    const best = prev == null ? c : Math.max(c, prev);
+    const diff = xpForQuiz(best) - (prev == null ? 0 : xpForQuiz(prev));
+    S.quizzes["w" + ui.week] = { best: best, stars: starCount(best) };
+    q.done = true;
+    q.diff = diff;
+    gain(Math.max(diff, 0), diff > 0 ? "+" + diff + " очков" : null);
+    render();
+    scrollTop();
+  }
+
+  /* ---------- actions ---------- */
+  function act(a, d) {
+    switch (a) {
+      case "tab":
+        ui.tab = d.tab;
+        ui.view = d.tab;
+        ui.scope = null; ui.cards = null; ui.cardsMsg = null;
+        render(); scrollTop();
+        break;
+      case "open-level": ui.tab = "path"; ui.week = Number(d.n) || ui.week; go("level"); break;
+      case "back-level": ui.week = Number(d.n) || ui.week; ui.scope = null; ui.cards = null; ui.cardsMsg = null; ui.tab = "path"; go("level"); break;
+      case "back-path": go("path"); break;
+      case "go-cards": ui.tab = "cards"; ui.scope = Number(d.n) || null; ui.cards = null; ui.cardsMsg = null; go("cards"); break;
+      case "open-lesson":
+        ui.lessonId = d.id; ui.step = 0; ui.picked = null; ui.nonce++;
+        go("lesson");
+        break;
+      case "next": ui.step++; render(); scrollTop(); break;
+      case "pick": {
+        if (ui.view === "lesson") {
+          if (ui.picked != null) return;
+          ui.picked = Number(d.i);
+        } else {
+          const q = ui.quiz;
+          if (q.picked != null) return;
+          q.picked = Number(d.i);
+          if (q.picked === W(ui.week).quiz[q.i].a) q.correct++;
+        }
+        render(); reveal();
+        break;
+      }
+      case "finish-lesson": {
+        const L = lessonById(ui.lessonId);
+        const ok = ui.picked === L.check.a;
+        if (!S.lessons[L.id]) {
+          S.lessons[L.id] = { ok: ok };
+          const g = 20 + (ok ? 10 : 0);
+          gain(g, "+" + g + " очков");
+        } else {
+          gain(0, "Урок повторён");
+        }
+        go("level");
+        break;
+      }
+      case "close": go("level"); break;
+      case "open-quiz":
+        if (!allLessons(ui.week)) { toast("Квиз откроется после четырёх уроков"); return; }
+        newQuiz();
+        go("quiz");
+        break;
+      case "quiz-next": {
+        const q = ui.quiz;
+        if (q.picked == null) return;
+        if (q.i < W(ui.week).quiz.length - 1) { q.i++; q.picked = null; ui.nonce++; render(); scrollTop(); }
+        else finishQuiz();
+        break;
+      }
+      case "retry-quiz": newQuiz(); render(); scrollTop(); break;
+      case "start-cards": {
+        const practice = d.practice === "1";
+        const ids = scopeCards().filter((c) => practice || dueNow(c)).map((c) => c.id);
+        if (!ids.length) { toast("На сегодня всё повторено"); return; }
+        ui.cards = { queue: shuffle(ids), flipped: false, total: ids.length, practice: practice };
+        ui.cardsMsg = null;
+        render(); scrollTop();
+        break;
+      }
+      case "flip":
+        if (ui.cards) { ui.cards.flipped = !ui.cards.flipped; render(); }
+        break;
+      case "know":
+      case "again": {
+        const c = ui.cards;
+        if (!c || !c.flipped) return;
+        const id = c.queue.shift();
+        if (!c.practice) {
+          const st = S.cards[id] || { box: 0, due: today() };
+          if (a === "know") {
+            st.box = Math.min(st.box + 1, 4);
+            st.due = addDays(today(), INTERVALS[st.box]);
+            S.cards[id] = st;
+            S.knows++;
+            gain(2, null);
+          } else {
+            st.box = 0;
+            st.due = today();
+            S.cards[id] = st;
+            touch();
+            save();
+          }
+        }
+        if (a === "again") c.queue.push(id);
+        c.flipped = false;
+        if (!c.queue.length) { ui.cards = null; ui.cardsMsg = "done"; }
+        render(); scrollTop();
+        break;
+      }
+      case "end-cards": ui.cards = null; ui.cardsMsg = null; render(); break;
+      case "export": {
+        try {
+          const blob = new Blob([JSON.stringify({ app: "derekh", version: 2, state: S })], { type: "application/json" });
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "derekh-progress-" + today() + ".json";
+          document.body.appendChild(a); a.click(); a.remove();
+          setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+          toast("Файл с прогрессом сохранён");
+        } catch (e) { toast("Не удалось сохранить файл"); }
+        break;
+      }
+      case "import": {
+        const inp = document.createElement("input");
+        inp.type = "file"; inp.accept = ".json,application/json";
+        inp.onchange = function () {
+          const f = inp.files && inp.files[0];
+          if (!f) return;
+          const r = new FileReader();
+          r.onload = function () {
+            try {
+              const o = JSON.parse(r.result);
+              const st = o && o.app === "derekh" ? o.state : null;
+              if (!st || typeof st.lessons !== "object" || typeof st.quizzes !== "object" || typeof st.cards !== "object") throw new Error("bad");
+              S = Object.assign(fresh(), st);
+              save(); render(); toast("Прогресс загружен");
+            } catch (e) { toast("Это не файл прогресса «Дерех»"); }
+          };
+          r.readAsText(f);
+        };
+        inp.click();
+        break;
+      }
+      case "reset-arm": ui.resetArm = true; render(); break;
+      case "reset-cancel": ui.resetArm = false; render(); break;
+      case "reset-do":
+        S = fresh(); save();
+        ui.resetArm = false; ui.cards = null; ui.cardsMsg = null; ui.quiz = null; ui.scope = null;
+        render(); toast("Прогресс стёрт");
+        break;
+    }
+  }
+
+  document.addEventListener("click", function (e) {
+    const t = e.target.closest("[data-action]");
+    if (!t || t.disabled) return;
+    act(t.dataset.action, t.dataset);
+  });
+
+  render();
+})();
+</script>
+<script>
+if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}
+</script>
+</body>
+</html>
